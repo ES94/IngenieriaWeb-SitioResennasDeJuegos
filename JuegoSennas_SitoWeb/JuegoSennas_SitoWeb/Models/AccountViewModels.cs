@@ -65,6 +65,11 @@ namespace JuegoSennas_SitoWeb.Models
     public class RegisterViewModel
     {
         [Required]
+        [StringLength(50, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 4)]
+        [Display(Name = "Nombre de usuario")]
+        public string Nombre { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
