@@ -27,3 +27,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.jumbotron {
+    color: white;
+    background-color: #c7254e;
+    padding-bottom: 0px;
+}
+
+.img-jumbotron {
+    height: 25%;
+}
