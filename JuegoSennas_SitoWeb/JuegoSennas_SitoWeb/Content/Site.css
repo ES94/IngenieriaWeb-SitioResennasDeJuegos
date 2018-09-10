@@ -35,5 +35,121 @@ textarea {
 }
 
 .img-jumbotron {
-    height: 25%;
+    height: 37%;
 }
+
+.separador {
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 400px;
+    position: relative;
+}
+
+    .separador .mask {
+        overflow: hidden;
+        height: 20px;
+    }
+
+        .separador .mask:after {
+            content: '';
+            display: block;
+            margin: -25px auto 0;
+            width: 100%;
+            height: 25px;
+            border-radius: 125px / 12px;
+            box-shadow: 0 0 8px white;
+        }
+
+    .separador span {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        bottom: 100%;
+        margin-bottom: -25px;
+        left: 50%;
+        margin-left: -25px;
+        border-radius: 100%;
+        box-shadow: 0 2px 4px #999;
+        background: white;
+    }
+
+        .separador span i {
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            left: 4px;
+            right: 4px;
+            border-radius: 100%;
+            border: 1px solid #c7254e;
+            text-align: center;
+            line-height: 40px;
+            font-style: normal;
+            color: #999;
+        }
+
+.separador-vertical {
+    display: inline-block;
+    margin-top: 100px;
+    margin-left: 0px;
+    width: 100px;
+    position: relative;
+}
+
+    .separador-vertical .mask {
+        overflow: hidden;
+        background-color: black;
+        width: 1px;
+        height: 200px;
+        content: '';
+        display: block;
+        margin-left: 20px;
+        box-shadow: 0 0 8px black;
+    }
+
+.separador-vertical-d {
+    display: inline-block;
+    margin-top: 100px;
+    margin-left: 100px;
+    width: 100px;
+    position: relative;
+}
+
+    .separador-vertical-d .mask {
+        overflow: hidden;
+        width: 20px;
+        height: 200px;
+    }
+
+        .separador-vertical-d .mask:before {
+            content: '';
+            display: block;
+            margin-left: 20px;
+            width: 20px;
+            height: 100%;
+            border-radius: 12px / 125px;
+            box-shadow: 0 0 8px black;
+        }
+
+.separador-vertical-i {
+    display: inline-block;
+    margin-top: 100px;
+    margin-left: 100px;
+    width: 100px;
+    position: relative;
+}
+
+    .separador-vertical-i .mask {
+        overflow: hidden;
+        width: 20px;
+        height: 200px;
+    }
+
+        .separador-vertical-i .mask:after {
+            content: '';
+            display: block;
+            margin-left: -20px;
+            width: 20px;
+            height: 100%;
+            border-radius: 12px / 125px;
+            box-shadow: 0 0 8px black;
+        }

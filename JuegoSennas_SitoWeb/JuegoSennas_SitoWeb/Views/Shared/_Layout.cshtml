@@ -20,6 +20,7 @@
                 </button>
                 @Html.ActionLink("JUEGOSeñas", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
+
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
@@ -30,14 +31,21 @@
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
-        <br />
-        <br />
-        <br />
-        <hr />
+
+        <div class="separador">
+            <div class="mask"></div>
+            <span>
+                <i>
+                    <b>J</b>S
+                </i>
+            </span>
+        </div>
+
         <footer>
-            <p>&copy; @DateTime.Now.Year - JUEGOSeñas</p>
+            <p>&copy; @DateTime.Now.Year - <b>JUEGO</b>Señas</p>
         </footer>
     </div>
 
