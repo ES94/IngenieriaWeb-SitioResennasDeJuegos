@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background: linear-gradient(0deg, black, white, white, white);
+    background: linear-gradient(0deg, #777777, white, white, white);
 }
 
 footer {
@@ -40,7 +40,7 @@ textarea {
 
 .separador {
     margin: 0 auto;
-    margin-top: 100px;
+    margin-top: 150px;
     width: 400px;
     position: relative;
 }
@@ -99,7 +99,7 @@ textarea {
         overflow: hidden;
         background-color: black;
         width: 1px;
-        height: 200px;
+        height: 50px;
         content: '';
         display: block;
         margin-left: 20px;
