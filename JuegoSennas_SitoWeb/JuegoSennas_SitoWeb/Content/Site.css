@@ -28,6 +28,16 @@ textarea {
     max-width: 280px;
 }
 
+.checkbox-aceptarcondiciones {
+    padding-left: 0px;
+    padding-right: 510px;
+}
+
+.checkbox-enviarcontenido {
+    padding-left: 0px;
+    padding-right: 606px;
+}
+
 .jumbotron {
     color: white;
     background-color: #c7254e;
@@ -104,6 +114,8 @@ textarea {
         display: block;
         margin-left: 20px;
         box-shadow: 0 0 8px black;
+        position: relative;
+        top: -50px;
     }
 
 .separador-vertical-d {
@@ -153,3 +165,4 @@ textarea {
             border-radius: 12px / 125px;
             box-shadow: 0 0 8px black;
         }
+

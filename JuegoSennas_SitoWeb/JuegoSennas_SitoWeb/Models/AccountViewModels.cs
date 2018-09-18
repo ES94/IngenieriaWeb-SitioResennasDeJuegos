@@ -65,9 +65,14 @@ namespace JuegoSennas_SitoWeb.Models
     public class RegisterViewModel
     {
         [Required]
-        [StringLength(50, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 4)]
-        [Display(Name = "Nombre de usuario")]
+        [StringLength(50, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 3)]
+        [Display(Name = "Nombre")]
         public string Nombre { get; set; }
+
+        [Required]
+        [StringLength(20, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 2)]
+        [Display(Name = "Apellido")]
+        public string Apellido { get; set; }
 
         [Required]
         [EmailAddress]
@@ -84,6 +89,12 @@ namespace JuegoSennas_SitoWeb.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "He leído y acepto las condiciones de uso.")]
+        public bool AceptarCondiciones { get; set; }
+
+        [Display(Name = "Enviar contenido al correo.")]
+        public bool EnviarContenido { get; set; }
     }
 
     public class ResetPasswordViewModel
