@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TP_IngWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CATEGORIAS_JUEGOS">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+    <Property Name="NombreCategoria" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="CONTENIDOS" Relationship="Self.FK_CONTENIDOS_CATEGORIAS_JUEGOS" FromRole="CATEGORIAS_JUEGOS" ToRole="CONTENIDOS" />
+  </EntityType>
+  <EntityType Name="CATEGORIAS_USUARIOS">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+    <Property Name="NombreCategoria" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USUARIOS_CATEGORIAS_USUARIOS" FromRole="CATEGORIAS_USUARIOS" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="CONTENIDOS">
+    <Key>
+      <PropertyRef Name="IdContenido" />
+    </Key>
+    <Property Name="IdContenido" Type="Int32" Nullable="false" />
+    <Property Name="IdTipo" Type="Int32" Nullable="false" />
+    <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Texto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdReseña" Type="Int32" />
+    <Property Name="IdComentario" Type="Int32" />
+    <Property Name="Puntaje" Type="Int32" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CATEGORIAS_JUEGOS" Relationship="Self.FK_CONTENIDOS_CATEGORIAS_JUEGOS" FromRole="CONTENIDOS" ToRole="CATEGORIAS_JUEGOS" />
+    <NavigationProperty Name="ESTADOS_CONTENIDO" Relationship="Self.FK_CONTENIDOS_ESTADOS_CONTENIDO" FromRole="CONTENIDOS" ToRole="ESTADOS_CONTENIDO" />
+    <NavigationProperty Name="TIPOS_CONTENIDOS" Relationship="Self.FK_CONTENIDOS_TIPOS_CONTENIDOS1" FromRole="CONTENIDOS" ToRole="TIPOS_CONTENIDOS" />
+  </EntityType>
+  <EntityType Name="ESTADOS_CONTENIDO">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="CONTENIDOS" Relationship="Self.FK_CONTENIDOS_ESTADOS_CONTENIDO" FromRole="ESTADOS_CONTENIDO" ToRole="CONTENIDOS" />
+  </EntityType>
+  <EntityType Name="ESTADOS_USUARIOS">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USUARIOS_ESTADOS_USUARIOS1" FromRole="ESTADOS_USUARIOS" ToRole="USUARIOS" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TIPOS_CONTENIDOS">
+    <Key>
+      <PropertyRef Name="IdTipo" />
+    </Key>
+    <Property Name="IdTipo" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="CONTENIDOS" Relationship="Self.FK_CONTENIDOS_TIPOS_CONTENIDOS1" FromRole="TIPOS_CONTENIDOS" ToRole="CONTENIDOS" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
+    <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Telefono" Type="Int32" />
+    <Property Name="Intereses" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="CATEGORIAS_USUARIOS" Relationship="Self.FK_USUARIOS_CATEGORIAS_USUARIOS" FromRole="USUARIOS" ToRole="CATEGORIAS_USUARIOS" />
+    <NavigationProperty Name="ESTADOS_USUARIOS" Relationship="Self.FK_USUARIOS_ESTADOS_USUARIOS1" FromRole="USUARIOS" ToRole="ESTADOS_USUARIOS" />
+  </EntityType>
+  <Association Name="FK_CONTENIDOS_CATEGORIAS_JUEGOS">
+    <End Role="CATEGORIAS_JUEGOS" Type="Self.CATEGORIAS_JUEGOS" Multiplicity="1" />
+    <End Role="CONTENIDOS" Type="Self.CONTENIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIAS_JUEGOS">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="CONTENIDOS">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOS_CATEGORIAS_USUARIOS">
+    <End Role="CATEGORIAS_USUARIOS" Type="Self.CATEGORIAS_USUARIOS" Multiplicity="1" />
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIAS_USUARIOS">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="USUARIOS">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTENIDOS_ESTADOS_CONTENIDO">
+    <End Role="ESTADOS_CONTENIDO" Type="Self.ESTADOS_CONTENIDO" Multiplicity="1" />
+    <End Role="CONTENIDOS" Type="Self.CONTENIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADOS_CONTENIDO">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="CONTENIDOS">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTENIDOS_TIPOS_CONTENIDOS1">
+    <End Role="TIPOS_CONTENIDOS" Type="Self.TIPOS_CONTENIDOS" Multiplicity="1" />
+    <End Role="CONTENIDOS" Type="Self.CONTENIDOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPOS_CONTENIDOS">
+        <PropertyRef Name="IdTipo" />
+      </Principal>
+      <Dependent Role="CONTENIDOS">
+        <PropertyRef Name="IdTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIOS_ESTADOS_USUARIOS1">
+    <End Role="ESTADOS_USUARIOS" Type="Self.ESTADOS_USUARIOS" Multiplicity="1" />
+    <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTADOS_USUARIOS">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="USUARIOS">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TP_IngWebEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CATEGORIAS_JUEGOS" EntityType="Self.CATEGORIAS_JUEGOS" />
+    <EntitySet Name="CATEGORIAS_USUARIOS" EntityType="Self.CATEGORIAS_USUARIOS" />
+    <EntitySet Name="CONTENIDOS" EntityType="Self.CONTENIDOS" />
+    <EntitySet Name="ESTADOS_CONTENIDO" EntityType="Self.ESTADOS_CONTENIDO" />
+    <EntitySet Name="ESTADOS_USUARIOS" EntityType="Self.ESTADOS_USUARIOS" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TIPOS_CONTENIDOS" EntityType="Self.TIPOS_CONTENIDOS" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+    <AssociationSet Name="FK_CONTENIDOS_CATEGORIAS_JUEGOS" Association="Self.FK_CONTENIDOS_CATEGORIAS_JUEGOS">
+      <End Role="CATEGORIAS_JUEGOS" EntitySet="CATEGORIAS_JUEGOS" />
+      <End Role="CONTENIDOS" EntitySet="CONTENIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOS_CATEGORIAS_USUARIOS" Association="Self.FK_USUARIOS_CATEGORIAS_USUARIOS">
+      <End Role="CATEGORIAS_USUARIOS" EntitySet="CATEGORIAS_USUARIOS" />
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTENIDOS_ESTADOS_CONTENIDO" Association="Self.FK_CONTENIDOS_ESTADOS_CONTENIDO">
+      <End Role="ESTADOS_CONTENIDO" EntitySet="ESTADOS_CONTENIDO" />
+      <End Role="CONTENIDOS" EntitySet="CONTENIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTENIDOS_TIPOS_CONTENIDOS1" Association="Self.FK_CONTENIDOS_TIPOS_CONTENIDOS1">
+      <End Role="TIPOS_CONTENIDOS" EntitySet="TIPOS_CONTENIDOS" />
+      <End Role="CONTENIDOS" EntitySet="CONTENIDOS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIOS_ESTADOS_USUARIOS1" Association="Self.FK_USUARIOS_ESTADOS_USUARIOS1">
+      <End Role="ESTADOS_USUARIOS" EntitySet="ESTADOS_USUARIOS" />
+      <End Role="USUARIOS" EntitySet="USUARIOS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

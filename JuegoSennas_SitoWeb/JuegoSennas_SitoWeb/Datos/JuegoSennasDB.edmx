@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TP_IngWebModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CATEGORIAS_JUEGOS">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+          <Property Name="NombreCategoria" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CATEGORIAS_USUARIOS">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+          <Property Name="NombreCategoria" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CONTENIDOS">
+          <Key>
+            <PropertyRef Name="IdContenido" />
+          </Key>
+          <Property Name="IdContenido" Type="int" Nullable="false" />
+          <Property Name="IdTipo" Type="int" Nullable="false" />
+          <Property Name="Titulo" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="Texto" Type="char" MaxLength="50" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="IdReseña" Type="int" />
+          <Property Name="IdComentario" Type="int" />
+          <Property Name="Puntaje" Type="int" />
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ESTADOS_CONTENIDO">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ESTADOS_USUARIOS">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TIPOS_CONTENIDOS">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+          </Key>
+          <Property Name="IdTipo" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Contraseña" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+          <Property Name="IdEstado" Type="int" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="datetime" />
+          <Property Name="Sexo" Type="char" MaxLength="1" />
+          <Property Name="Telefono" Type="int" />
+          <Property Name="Intereses" Type="char" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CONTENIDOS_CATEGORIAS_JUEGOS">
+          <End Role="CATEGORIAS_JUEGOS" Type="Self.CATEGORIAS_JUEGOS" Multiplicity="1" />
+          <End Role="CONTENIDOS" Type="Self.CONTENIDOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIAS_JUEGOS">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="CONTENIDOS">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTENIDOS_ESTADOS_CONTENIDO">
+          <End Role="ESTADOS_CONTENIDO" Type="Self.ESTADOS_CONTENIDO" Multiplicity="1" />
+          <End Role="CONTENIDOS" Type="Self.CONTENIDOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOS_CONTENIDO">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="CONTENIDOS">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTENIDOS_TIPOS_CONTENIDOS1">
+          <End Role="TIPOS_CONTENIDOS" Type="Self.TIPOS_CONTENIDOS" Multiplicity="1" />
+          <End Role="CONTENIDOS" Type="Self.CONTENIDOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_CONTENIDOS">
+              <PropertyRef Name="IdTipo" />
+            </Principal>
+            <Dependent Role="CONTENIDOS">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_CATEGORIAS_USUARIOS">
+          <End Role="CATEGORIAS_USUARIOS" Type="Self.CATEGORIAS_USUARIOS" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIAS_USUARIOS">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_ESTADOS_USUARIOS1">
+          <End Role="ESTADOS_USUARIOS" Type="Self.ESTADOS_USUARIOS" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOS_USUARIOS">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TP_IngWebModelStoreContainer">
+          <EntitySet Name="CATEGORIAS_JUEGOS" EntityType="Self.CATEGORIAS_JUEGOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATEGORIAS_USUARIOS" EntityType="Self.CATEGORIAS_USUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CONTENIDOS" EntityType="Self.CONTENIDOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESTADOS_CONTENIDO" EntityType="Self.ESTADOS_CONTENIDO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ESTADOS_USUARIOS" EntityType="Self.ESTADOS_USUARIOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOS_CONTENIDOS" EntityType="Self.TIPOS_CONTENIDOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CONTENIDOS_CATEGORIAS_JUEGOS" Association="Self.FK_CONTENIDOS_CATEGORIAS_JUEGOS">
+            <End Role="CATEGORIAS_JUEGOS" EntitySet="CATEGORIAS_JUEGOS" />
+            <End Role="CONTENIDOS" EntitySet="CONTENIDOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTENIDOS_ESTADOS_CONTENIDO" Association="Self.FK_CONTENIDOS_ESTADOS_CONTENIDO">
+            <End Role="ESTADOS_CONTENIDO" EntitySet="ESTADOS_CONTENIDO" />
+            <End Role="CONTENIDOS" EntitySet="CONTENIDOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTENIDOS_TIPOS_CONTENIDOS1" Association="Self.FK_CONTENIDOS_TIPOS_CONTENIDOS1">
+            <End Role="TIPOS_CONTENIDOS" EntitySet="TIPOS_CONTENIDOS" />
+            <End Role="CONTENIDOS" EntitySet="CONTENIDOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_CATEGORIAS_USUARIOS" Association="Self.FK_USUARIOS_CATEGORIAS_USUARIOS">
+            <End Role="CATEGORIAS_USUARIOS" EntitySet="CATEGORIAS_USUARIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_ESTADOS_USUARIOS1" Association="Self.FK_USUARIOS_ESTADOS_USUARIOS1">
+            <End Role="ESTADOS_USUARIOS" EntitySet="ESTADOS_USUARIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TP_IngWebModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CATEGORIAS_JUEGOS">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <Property Name="NombreCategoria" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CONTENIDOS" Relationship="Self.FK_CONTENIDOS_CATEGORIAS_JUEGOS" FromRole="CATEGORIAS_JUEGOS" ToRole="CONTENIDOS" />
+        </EntityType>
+        <EntityType Name="CATEGORIAS_USUARIOS">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <Property Name="NombreCategoria" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USUARIOS_CATEGORIAS_USUARIOS" FromRole="CATEGORIAS_USUARIOS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="CONTENIDOS">
+          <Key>
+            <PropertyRef Name="IdContenido" />
+          </Key>
+          <Property Name="IdContenido" Type="Int32" Nullable="false" />
+          <Property Name="IdTipo" Type="Int32" Nullable="false" />
+          <Property Name="Titulo" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Texto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="IdReseña" Type="Int32" />
+          <Property Name="IdComentario" Type="Int32" />
+          <Property Name="Puntaje" Type="Int32" />
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CATEGORIAS_JUEGOS" Relationship="Self.FK_CONTENIDOS_CATEGORIAS_JUEGOS" FromRole="CONTENIDOS" ToRole="CATEGORIAS_JUEGOS" />
+          <NavigationProperty Name="ESTADOS_CONTENIDO" Relationship="Self.FK_CONTENIDOS_ESTADOS_CONTENIDO" FromRole="CONTENIDOS" ToRole="ESTADOS_CONTENIDO" />
+          <NavigationProperty Name="TIPOS_CONTENIDOS" Relationship="Self.FK_CONTENIDOS_TIPOS_CONTENIDOS1" FromRole="CONTENIDOS" ToRole="TIPOS_CONTENIDOS" />
+        </EntityType>
+        <EntityType Name="ESTADOS_CONTENIDO">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CONTENIDOS" Relationship="Self.FK_CONTENIDOS_ESTADOS_CONTENIDO" FromRole="ESTADOS_CONTENIDO" ToRole="CONTENIDOS" />
+        </EntityType>
+        <EntityType Name="ESTADOS_USUARIOS">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.FK_USUARIOS_ESTADOS_USUARIOS1" FromRole="ESTADOS_USUARIOS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TIPOS_CONTENIDOS">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+          </Key>
+          <Property Name="IdTipo" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CONTENIDOS" Relationship="Self.FK_CONTENIDOS_TIPOS_CONTENIDOS1" FromRole="TIPOS_CONTENIDOS" ToRole="CONTENIDOS" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <Property Name="IdEstado" Type="Int32" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
+          <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Telefono" Type="Int32" />
+          <Property Name="Intereses" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="CATEGORIAS_USUARIOS" Relationship="Self.FK_USUARIOS_CATEGORIAS_USUARIOS" FromRole="USUARIOS" ToRole="CATEGORIAS_USUARIOS" />
+          <NavigationProperty Name="ESTADOS_USUARIOS" Relationship="Self.FK_USUARIOS_ESTADOS_USUARIOS1" FromRole="USUARIOS" ToRole="ESTADOS_USUARIOS" />
+        </EntityType>
+        <Association Name="FK_CONTENIDOS_CATEGORIAS_JUEGOS">
+          <End Role="CATEGORIAS_JUEGOS" Type="Self.CATEGORIAS_JUEGOS" Multiplicity="1" />
+          <End Role="CONTENIDOS" Type="Self.CONTENIDOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIAS_JUEGOS">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="CONTENIDOS">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_CATEGORIAS_USUARIOS">
+          <End Role="CATEGORIAS_USUARIOS" Type="Self.CATEGORIAS_USUARIOS" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIAS_USUARIOS">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTENIDOS_ESTADOS_CONTENIDO">
+          <End Role="ESTADOS_CONTENIDO" Type="Self.ESTADOS_CONTENIDO" Multiplicity="1" />
+          <End Role="CONTENIDOS" Type="Self.CONTENIDOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOS_CONTENIDO">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="CONTENIDOS">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTENIDOS_TIPOS_CONTENIDOS1">
+          <End Role="TIPOS_CONTENIDOS" Type="Self.TIPOS_CONTENIDOS" Multiplicity="1" />
+          <End Role="CONTENIDOS" Type="Self.CONTENIDOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_CONTENIDOS">
+              <PropertyRef Name="IdTipo" />
+            </Principal>
+            <Dependent Role="CONTENIDOS">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOS_ESTADOS_USUARIOS1">
+          <End Role="ESTADOS_USUARIOS" Type="Self.ESTADOS_USUARIOS" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ESTADOS_USUARIOS">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TP_IngWebEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CATEGORIAS_JUEGOS" EntityType="Self.CATEGORIAS_JUEGOS" />
+          <EntitySet Name="CATEGORIAS_USUARIOS" EntityType="Self.CATEGORIAS_USUARIOS" />
+          <EntitySet Name="CONTENIDOS" EntityType="Self.CONTENIDOS" />
+          <EntitySet Name="ESTADOS_CONTENIDO" EntityType="Self.ESTADOS_CONTENIDO" />
+          <EntitySet Name="ESTADOS_USUARIOS" EntityType="Self.ESTADOS_USUARIOS" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TIPOS_CONTENIDOS" EntityType="Self.TIPOS_CONTENIDOS" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <AssociationSet Name="FK_CONTENIDOS_CATEGORIAS_JUEGOS" Association="Self.FK_CONTENIDOS_CATEGORIAS_JUEGOS">
+            <End Role="CATEGORIAS_JUEGOS" EntitySet="CATEGORIAS_JUEGOS" />
+            <End Role="CONTENIDOS" EntitySet="CONTENIDOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_CATEGORIAS_USUARIOS" Association="Self.FK_USUARIOS_CATEGORIAS_USUARIOS">
+            <End Role="CATEGORIAS_USUARIOS" EntitySet="CATEGORIAS_USUARIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTENIDOS_ESTADOS_CONTENIDO" Association="Self.FK_CONTENIDOS_ESTADOS_CONTENIDO">
+            <End Role="ESTADOS_CONTENIDO" EntitySet="ESTADOS_CONTENIDO" />
+            <End Role="CONTENIDOS" EntitySet="CONTENIDOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTENIDOS_TIPOS_CONTENIDOS1" Association="Self.FK_CONTENIDOS_TIPOS_CONTENIDOS1">
+            <End Role="TIPOS_CONTENIDOS" EntitySet="TIPOS_CONTENIDOS" />
+            <End Role="CONTENIDOS" EntitySet="CONTENIDOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOS_ESTADOS_USUARIOS1" Association="Self.FK_USUARIOS_ESTADOS_USUARIOS1">
+            <End Role="ESTADOS_USUARIOS" EntitySet="ESTADOS_USUARIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TP_IngWebModelStoreContainer" CdmEntityContainer="TP_IngWebEntities">
+          <EntitySetMapping Name="CATEGORIAS_JUEGOS">
+            <EntityTypeMapping TypeName="TP_IngWebModel.CATEGORIAS_JUEGOS">
+              <MappingFragment StoreEntitySet="CATEGORIAS_JUEGOS">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORIAS_USUARIOS">
+            <EntityTypeMapping TypeName="TP_IngWebModel.CATEGORIAS_USUARIOS">
+              <MappingFragment StoreEntitySet="CATEGORIAS_USUARIOS">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CONTENIDOS">
+            <EntityTypeMapping TypeName="TP_IngWebModel.CONTENIDOS">
+              <MappingFragment StoreEntitySet="CONTENIDOS">
+                <ScalarProperty Name="IdContenido" ColumnName="IdContenido" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdReseña" ColumnName="IdReseña" />
+                <ScalarProperty Name="IdComentario" ColumnName="IdComentario" />
+                <ScalarProperty Name="Puntaje" ColumnName="Puntaje" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADOS_CONTENIDO">
+            <EntityTypeMapping TypeName="TP_IngWebModel.ESTADOS_CONTENIDO">
+              <MappingFragment StoreEntitySet="ESTADOS_CONTENIDO">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ESTADOS_USUARIOS">
+            <EntityTypeMapping TypeName="TP_IngWebModel.ESTADOS_USUARIOS">
+              <MappingFragment StoreEntitySet="ESTADOS_USUARIOS">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TP_IngWebModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_CONTENIDOS">
+            <EntityTypeMapping TypeName="TP_IngWebModel.TIPOS_CONTENIDOS">
+              <MappingFragment StoreEntitySet="TIPOS_CONTENIDOS">
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="TP_IngWebModel.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Intereses" ColumnName="Intereses" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

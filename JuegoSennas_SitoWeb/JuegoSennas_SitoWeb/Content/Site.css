@@ -28,6 +28,10 @@ textarea {
     max-width: 280px;
 }
 
+.texto-blanco {
+    color: white;
+}
+
 .checkbox-aceptarcondiciones {
     padding-left: 0px;
     padding-right: 510px;

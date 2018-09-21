@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TP_IngWebModelStoreContainer" CdmEntityContainer="TP_IngWebEntities">
+    <EntitySetMapping Name="CATEGORIAS_JUEGOS">
+      <EntityTypeMapping TypeName="TP_IngWebModel.CATEGORIAS_JUEGOS">
+        <MappingFragment StoreEntitySet="CATEGORIAS_JUEGOS">
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORIAS_USUARIOS">
+      <EntityTypeMapping TypeName="TP_IngWebModel.CATEGORIAS_USUARIOS">
+        <MappingFragment StoreEntitySet="CATEGORIAS_USUARIOS">
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONTENIDOS">
+      <EntityTypeMapping TypeName="TP_IngWebModel.CONTENIDOS">
+        <MappingFragment StoreEntitySet="CONTENIDOS">
+          <ScalarProperty Name="IdContenido" ColumnName="IdContenido" />
+          <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Texto" ColumnName="Texto" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdReseña" ColumnName="IdReseña" />
+          <ScalarProperty Name="IdComentario" ColumnName="IdComentario" />
+          <ScalarProperty Name="Puntaje" ColumnName="Puntaje" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADOS_CONTENIDO">
+      <EntityTypeMapping TypeName="TP_IngWebModel.ESTADOS_CONTENIDO">
+        <MappingFragment StoreEntitySet="ESTADOS_CONTENIDO">
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTADOS_USUARIOS">
+      <EntityTypeMapping TypeName="TP_IngWebModel.ESTADOS_USUARIOS">
+        <MappingFragment StoreEntitySet="ESTADOS_USUARIOS">
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TP_IngWebModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPOS_CONTENIDOS">
+      <EntityTypeMapping TypeName="TP_IngWebModel.TIPOS_CONTENIDOS">
+        <MappingFragment StoreEntitySet="TIPOS_CONTENIDOS">
+          <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIOS">
+      <EntityTypeMapping TypeName="TP_IngWebModel.USUARIOS">
+        <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Intereses" ColumnName="Intereses" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
