@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace SitioWeb_Juegos.Models
 {
     public class ExternalLoginConfirmationViewModel

@@ -54,10 +54,10 @@ namespace SitioWeb_Juegos
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false,
             };
 
             // Configurar valores predeterminados para bloqueo de usuario
@@ -86,6 +86,7 @@ namespace SitioWeb_Juegos
             }
             return manager;
         }
+
     }
 
     // Configure el administrador de inicios de sesión que se usa en esta aplicación.
