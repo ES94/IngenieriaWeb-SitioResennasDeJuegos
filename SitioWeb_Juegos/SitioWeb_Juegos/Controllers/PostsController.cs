@@ -138,6 +138,18 @@ namespace SitioWeb_Juegos.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult Comentarios(string comentario, int IdPost)
+        {
+            var IdAutor = User.Identity.GetUserId();
+            if (comentario != null)
+            {
+                db.Comentarios.Add(new Comentarios { Autor = IdAutor, Post = IdPost, FechaPublicacion = DateTime.Now, IdEstado = 1, Contenido = comentario });
+                db.SaveChanges();              
+            }
+
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

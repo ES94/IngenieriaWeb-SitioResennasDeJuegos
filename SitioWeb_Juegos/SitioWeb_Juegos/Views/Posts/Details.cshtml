@@ -33,7 +33,7 @@
             <p>@Model.Contenido</p>
 
             <strong>Tags:</strong>
-            
+
             <ul>
                 <li>
                     <a href="http://spaceipsum.com/">Space Ipsum</a>
@@ -46,17 +46,66 @@
                 </li>
             </ul>
             <hr>
-            <!-- the comment box -->
-            <div class="well">
-                <h4>Leave a Comment:</h4>
-                <form role="form">
-                    <div class="form-group">
-                        <textarea rows="3" class="form-control"></textarea>
+            @if (User.Identity.Name != "")
+            {
+                <div class="well">
+                    <h4>Leave a Comment:</h4>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea id="Comentarios" typeof="text" rows="3" class="form-control"></textarea>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Comentar</button>
+                    </form>
+                </div>
+            }
+            else
+            {
+                <h2>Tiene que estar logeado para comentar</h2>
+                @Html.ActionLink("Iniciar Sesion", "Login","Account")
+            }
+            <div class="media">
+                @*@foreach (var item in Model.Comentarios.ToList())
+                {
+                    <a class="pull-left">
+                       @Model.AspNetUsers.UserName
+                    </a>
+                    <div class="media-body">
+
+                        <h4 class="media-heading">
+                            <small>
+                                @Model.FechaPublicacion
+                            </small>
+            
+                        </h4>
+
                     </div>
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                </form>
+                }*@
+
+
             </div>
+            <!-- the comment box -->
+
             <hr>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                    $("#gonder").click(function () {
+                        var comment = $('#Comentario').val();
+                        $.ajax({
+                            url: '/Posts/Comentarios',
+                            data: { Comentario = comment, IdPost = @Model.Id},
+                            type: 'POST',
+                            dataType: 'json',
+                            success: function (data) {
+                                alert("error!!!" = comment);
+                            }
+
+                        });
+                    });
+
+
+                });
+
+            </script>
             <!-- the comments -->
 
         </div>
@@ -120,96 +169,3 @@
         </div>
     </div>
 </div>
-
-@*<h2>Details</h2>
-
-<div>
-    <h4>Posts</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Contenido)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Contenido)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaPublicacion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaPublicacion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Puntaje)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Puntaje)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Eliminado)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Eliminado)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUsers.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AspNetUsers.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Categorias.Categoria)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Categorias.Categoria)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Estados.Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Estados.Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Juegos.Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Juegos.Descripcion)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
