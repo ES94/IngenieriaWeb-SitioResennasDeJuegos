@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
+using System.Net.Mail;
+using System.Net.Mime;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -21,8 +24,9 @@ namespace SitioWeb_Juegos
             // Conecte su servicio de correo electrónico aquí para enviar correo electrónico.
             return Task.FromResult(0);
         }
-    }
 
+        
+    }
     public class SmsService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
