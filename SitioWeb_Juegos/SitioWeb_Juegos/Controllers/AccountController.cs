@@ -67,9 +67,18 @@ namespace SitioWeb_Juegos.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
-        {
+        {          
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+            var currentUser = UserManager.FindByName(user.UserName);
             if (!ModelState.IsValid)
             {
+                return View(model);
+            }
+
+            //Verifica que la cuenta de correo este confirmada, si no lo esta, no permite iniciar sesion.
+            if (currentUser.EmailConfirmed == false)
+            {
+                ModelState.AddModelError("", "La cuenta de correo no está activada");
                 return View(model);
             }
 
@@ -155,13 +164,16 @@ namespace SitioWeb_Juegos.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    var currentUser = UserManager.FindByName(user.UserName);
+                    UserManager.AddToRole(currentUser.Id, "Usuario");
+
+
                     // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
                     // Enviar correo electrónico con este vínculo
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -211,10 +223,10 @@ namespace SitioWeb_Juegos.Controllers
 
                 // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
                 // Enviar correo electrónico con este vínculo
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Restablecer contraseña", "Para restablecer la contraseña, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Restablecer contraseña", "Para restablecer la contraseña, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
