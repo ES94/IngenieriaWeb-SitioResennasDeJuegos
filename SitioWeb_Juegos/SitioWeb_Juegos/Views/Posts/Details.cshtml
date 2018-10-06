@@ -1,4 +1,5 @@
 ﻿@model Datos.Posts
+     
 
 @{
     ViewBag.Title = "Details";
@@ -52,30 +53,30 @@
                     <h4>Leave a Comment:</h4>
                     <form role="form">
                         <div class="form-group">
-                            <textarea id="Comentarios" typeof="text" rows="3" class="form-control"></textarea>
+                            <textarea id="Comentario" typeof="text" rows="3" class="form-control"></textarea>
                         </div>
-                        <button class="btn btn-primary" type="submit">Comentar</button>
+                        <button class="btn btn-primary" id="gonder" type="submit">Comentar</button>
                     </form>
                 </div>
             }
             else
             {
                 <h2>Tiene que estar logeado para comentar</h2>
-                @Html.ActionLink("Iniciar Sesion", "Login","Account")
+                @Html.ActionLink("Iniciar Sesion", "Login", "Account")
             }
 
             <div class="media">
                 @foreach (var item in Model.Comentarios.ToList())
                 {
                     <a class="pull-left">
-                       @Model.AspNetUsers.UserName
+                        @Model.AspNetUsers.UserName
                     </a>
                     <div class="media-body">
 
                         <h4 class="media-heading">
                             <small>
                                 @Model.FechaPublicacion
-                            </small>           
+                            </small>
                         </h4>
 
                     </div>
@@ -86,13 +87,19 @@
             <!-- the comment box -->
 
             <hr>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
+        <script src="@Url.Content("~/Content/js/jquery.js")"></script>
+
+
             <script type="text/javascript">
                 $(document).ready(function(){
                     $("#gonder").click(function () {
-                        var comment = $('#Comentario').val();
+                        var comment = $("#Comentario").val();
                         $.ajax({
-                            url: '/Posts/Comentarios',
-                            data: { Comentario = comment, IdPost = @Model.Id},
+                            url: '/Posts/Create',
+                            data: { Comentario=comment, IdPost=@Model.Id},
                             type: 'POST',
                             dataType: 'json',
                             success: function (data) {

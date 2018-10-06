@@ -139,17 +139,21 @@ namespace SitioWeb_Juegos.Controllers
             return RedirectToAction("Index");
         }
 
-        public JsonResult Comentario(string comentario, int IdPost)
+        public JsonResult CrearComentario(string comentario, int IdPost)
         {
-            ConsultasComentarios consu = new ConsultasComentarios();
+            ConsultasComentarios consultascomentarios = new ConsultasComentarios();
             var IdAutor = User.Identity.GetUserId();
-            if (comentario != null)
+            if (comentario == null)
             {
-                db.Comentarios.Add(new Comentarios { Autor = IdAutor, Post = IdPost, FechaPublicacion = DateTime.Now, IdEstado = 1, Contenido = comentario });
-                db.SaveChanges();           
+                return Json(false, JsonRequestBehavior.AllowGet);
                 
             }
 
+            Comentario model = new Comentario();
+            model.Autor = IdAutor;
+            model.Contenido = comentario;
+            model.Post = IdPost;
+            var idgenerado = consultascomentarios.CrearComentario(model);
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
