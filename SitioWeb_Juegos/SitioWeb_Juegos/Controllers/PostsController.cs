@@ -18,7 +18,7 @@ namespace SitioWeb_Juegos.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            var posts = db.Posts.Include(p => p.AspNetUsers).Include(p => p.Categorias).Include(p => p.Estados).Include(p => p.Juegos);
+            var posts = db.Posts.Include(p => p.AspNetUsers).Include(p => p.Categorias).Include(p => p.Estados).Include(p => p.Juegos).Where(x => x.Estados.Descripcion == "Activo");
             return View(posts.ToList());
         }
 

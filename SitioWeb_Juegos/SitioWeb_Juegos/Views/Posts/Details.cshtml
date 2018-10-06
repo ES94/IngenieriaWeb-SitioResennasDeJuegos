@@ -46,7 +46,7 @@
                 </li>
             </ul>
             <hr>
-            @if (User.Identity.Name != "")
+            @if (User.Identity.IsAuthenticated)
             {
                 <div class="well">
                     <h4>Leave a Comment:</h4>
