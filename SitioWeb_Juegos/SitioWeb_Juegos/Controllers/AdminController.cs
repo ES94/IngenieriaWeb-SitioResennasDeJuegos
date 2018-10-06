@@ -1,4 +1,4 @@
-﻿using SitioWeb_Juegos.Datos;
+﻿using Datos;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

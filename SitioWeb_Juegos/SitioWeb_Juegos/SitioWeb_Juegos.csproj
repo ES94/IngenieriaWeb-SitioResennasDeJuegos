@@ -210,66 +210,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\TopController.cs" />
-    <Compile Include="Datos\AspNetRoles.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\AspNetUserClaims.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\AspNetUserLogins.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\AspNetUsers.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\Categorias.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\Comentarios.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\C__MigrationHistory.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\Denuncias.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\Estados.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\Juegos.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\ModelBDResennasJuegos.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBDResennasJuegos.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\ModelBDResennasJuegos.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\ModelBDResennasJuegos.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBDResennasJuegos.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\Noticias.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\Posts.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\sysdiagrams.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\Tags.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Datos\Votos.cs">
-      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1713,16 +1653,6 @@
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\Site.css" />
-    <Content Include="Datos\ModelBDResennasJuegos.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelBDResennasJuegos.edmx</DependentUpon>
-      <LastGenOutput>ModelBDResennasJuegos.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Datos\ModelBDResennasJuegos.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelBDResennasJuegos.edmx</DependentUpon>
-      <LastGenOutput>ModelBDResennasJuegos.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1808,13 +1738,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
-    <EntityDeploy Include="Datos\ModelBDResennasJuegos.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelBDResennasJuegos.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Datos\ModelBDResennasJuegos.edmx.diagram">
-      <DependentUpon>ModelBDResennasJuegos.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1926,6 +1849,19 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{76d61ea6-1bd9-40ad-8fdb-52df784bb4d3}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servicios\Servicios.csproj">
+      <Project>{ea6eecee-1d0f-4ba5-891c-7ded30031e58}</Project>
+      <Name>Servicios</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

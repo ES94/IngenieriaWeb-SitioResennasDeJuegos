@@ -8,7 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using SitioWeb_Juegos.Datos;
+using Datos;
 
 namespace SitioWeb_Juegos.Controllers
 {

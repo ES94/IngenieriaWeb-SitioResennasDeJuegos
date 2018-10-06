@@ -6,8 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using SitioWeb_Juegos.Datos;
+using Datos;
 using Microsoft.AspNet.Identity;
+using Servicios;
 
 namespace SitioWeb_Juegos.Controllers
 {
@@ -138,13 +139,15 @@ namespace SitioWeb_Juegos.Controllers
             return RedirectToAction("Index");
         }
 
-        public JsonResult Comentarios(string comentario, int IdPost)
+        public JsonResult Comentario(string comentario, int IdPost)
         {
+            ConsultasComentarios consu = new ConsultasComentarios();
             var IdAutor = User.Identity.GetUserId();
             if (comentario != null)
             {
                 db.Comentarios.Add(new Comentarios { Autor = IdAutor, Post = IdPost, FechaPublicacion = DateTime.Now, IdEstado = 1, Contenido = comentario });
-                db.SaveChanges();              
+                db.SaveChanges();           
+                
             }
 
             return Json(false, JsonRequestBehavior.AllowGet);

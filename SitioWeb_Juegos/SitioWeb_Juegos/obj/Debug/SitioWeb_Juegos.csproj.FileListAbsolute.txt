@@ -130,3 +130,9 @@ C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_J
 C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\SitioWeb_Juegos\obj\Debug\SitioWeb_Juegos.dll
 C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\SitioWeb_Juegos\obj\Debug\SitioWeb_Juegos.pdb
 C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\SitioWeb_Juegos\obj\Debug\SitioWeb_Juegos.csprojAssemblyReference.cache
+C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\SitioWeb_Juegos\bin\Datos.dll
+C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\SitioWeb_Juegos\bin\Servicios.dll
+C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\SitioWeb_Juegos\bin\Datos.pdb
+C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\SitioWeb_Juegos\bin\Datos.dll.config
+C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\SitioWeb_Juegos\bin\Servicios.pdb
+C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\SitioWeb_Juegos\bin\Servicios.dll.config

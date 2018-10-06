@@ -1,4 +1,4 @@
-﻿@model SitioWeb_Juegos.Datos.Posts
+﻿@model Datos.Posts
 
 @{
     ViewBag.Title = "Details";
@@ -63,8 +63,9 @@
                 <h2>Tiene que estar logeado para comentar</h2>
                 @Html.ActionLink("Iniciar Sesion", "Login","Account")
             }
+
             <div class="media">
-                @*@foreach (var item in Model.Comentarios.ToList())
+                @foreach (var item in Model.Comentarios.ToList())
                 {
                     <a class="pull-left">
                        @Model.AspNetUsers.UserName
@@ -74,12 +75,11 @@
                         <h4 class="media-heading">
                             <small>
                                 @Model.FechaPublicacion
-                            </small>
-            
+                            </small>           
                         </h4>
 
                     </div>
-                }*@
+                }
 
 
             </div>
