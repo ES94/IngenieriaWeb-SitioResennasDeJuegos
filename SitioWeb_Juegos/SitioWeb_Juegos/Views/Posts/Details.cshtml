@@ -32,6 +32,7 @@
             <img class="img-responsive" src="@Model.Juegos.Imagen">
             <hr>
             <p>@Model.Contenido</p>
+            
 
             <strong>Tags:</strong>
 
@@ -50,12 +51,12 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <div class="well">
-                    <h4>Leave a Comment:</h4>
+                    <h4>Comentarios:</h4>
                     <form role="form">
                         <div class="form-group">
                             <textarea id="Comentario" typeof="text" rows="3" class="form-control"></textarea>
                         </div>
-                        <button class="btn btn-primary" id="gonder" type="submit">Comentar</button>
+                        <button class="btn btn-primary" id="BtnComentar" type="submit">Comentar</button>
                     </form>
                 </div>
             }
@@ -65,51 +66,54 @@
                 @Html.ActionLink("Iniciar Sesion", "Login", "Account")
             }
 
+
+            <!-- Lista todos los comentarios -->
             <div class="media">
                 @foreach (var item in Model.Comentarios.ToList())
                 {
                     <a class="pull-left">
-                        @Model.AspNetUsers.UserName
+                        @item.AspNetUsers.UserName
                     </a>
                     <div class="media-body">
 
                         <h4 class="media-heading">
                             <small>
-                                @Model.FechaPublicacion
+                                @item.FechaPublicacion
                             </small>
+                                                       
+                            @item.Contenido
+                            
                         </h4>
-
                     </div>
                 }
-
-
             </div>
             <!-- the comment box -->
 
             <hr>
 
+            <!-- Hace la magia para comentar y ver el comentario creado -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="@Url.Content("~/Content/js/bootstrap.min.js")"></script>
-        <script src="@Url.Content("~/Content/js/jquery.js")"></script>
-
-
             <script type="text/javascript">
-                $(document).ready(function(){
-                    $("#gonder").click(function () {
+                $(function() {
+                    $("#BtnComentar").click(function () {
                         var comment = $("#Comentario").val();
-                        $.ajax({
-                            url: '/Posts/Create',
-                            data: { Comentario=comment, IdPost=@Model.Id},
-                            type: 'POST',
-                            dataType: 'json',
-                            success: function (data) {
-                                alert("error!!!" = comment);
-                            }
+                        if (comment.trim() != "") //Se puede ingresar espacios y el comentario se guarda igual, el .trim elimina el espacio en blanco y verifica si es vacio
+                        {
+                            $.ajax({
+                                url: '/Posts/CrearComentario/',
+                                data: { Comentario: comment, IdPost:@Model.Id},
+                                type: 'POST',
+                                dataType: 'json',
+                                success: function (data) {    
+                                    alert("Gracias por Comentar!");
+                                }                               
+                            })
+                        }
+                        else {
+                            alert("Error! Comentario Vacio");
+                        }
 
-                        });
-                    });
-
-
+                    })
                 });
 
             </script>

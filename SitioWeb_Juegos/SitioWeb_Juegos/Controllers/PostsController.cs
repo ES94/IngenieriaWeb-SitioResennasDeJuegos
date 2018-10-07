@@ -143,11 +143,6 @@ namespace SitioWeb_Juegos.Controllers
         {
             ConsultasComentarios consultascomentarios = new ConsultasComentarios();
             var IdAutor = User.Identity.GetUserId();
-            if (comentario == null)
-            {
-                return Json(false, JsonRequestBehavior.AllowGet);
-                
-            }
 
             Comentario model = new Comentario();
             model.Autor = IdAutor;

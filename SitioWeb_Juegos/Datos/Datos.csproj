@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{76D61EA6-1BD9-40AD-8FDB-52DF784BB4D3}</ProjectGuid>
+    <ProjectGuid>{046920DD-F525-4B7A-A946-73C5901FDA6B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Datos</RootNamespace>
@@ -114,11 +114,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <EntityDeploy Include="ModelBDResennasJuegos.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelBDResennasJuegos.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
     <None Include="ModelBDResennasJuegos.edmx.diagram">
       <DependentUpon>ModelBDResennasJuegos.edmx</DependentUpon>
     </None>
@@ -127,8 +129,8 @@
   <ItemGroup>
     <Content Include="ModelBDResennasJuegos.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelBDResennasJuegos.edmx</DependentUpon>
       <LastGenOutput>ModelBDResennasJuegos.Context.cs</LastGenOutput>
+      <DependentUpon>ModelBDResennasJuegos.edmx</DependentUpon>
     </Content>
     <Content Include="ModelBDResennasJuegos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
