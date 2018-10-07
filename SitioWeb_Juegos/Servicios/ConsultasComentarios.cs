@@ -20,7 +20,6 @@ namespace Servicios
             nuevocomentario.FechaPublicacion = DateTime.Now;
             nuevocomentario.Post = model.Post;
             nuevocomentario.IdEstado = 1;
-            nuevocomentario.Titulo = "Prueba Titulo";
             db.Comentarios.Add(nuevocomentario);
             db.SaveChanges();
             int idgenerado = nuevocomentario.Id;

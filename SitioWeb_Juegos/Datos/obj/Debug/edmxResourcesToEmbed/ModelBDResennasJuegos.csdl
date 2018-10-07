@@ -60,6 +60,7 @@
     <Property Name="Baneado" Type="Boolean" />
     <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="Comentarios" Relationship="Self.FK_Comentarios_AspNetUsers" FromRole="AspNetUsers" ToRole="Comentarios" />
     <NavigationProperty Name="Denuncias" Relationship="Self.FK_Denuncias_AspNetUsers" FromRole="AspNetUsers" ToRole="Denuncias" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_AspNetUsers" FromRole="AspNetUsers" ToRole="Posts" />
     <NavigationProperty Name="Votos" Relationship="Self.FK_Votos_AspNetUsers" FromRole="AspNetUsers" ToRole="Votos" />
@@ -79,13 +80,14 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="FechaPublicacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Autor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Post" Type="Int32" Nullable="false" />
-    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
     <Property Name="Eliminado" Type="Boolean" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Comentarios_AspNetUsers" FromRole="Comentarios" ToRole="AspNetUsers" />
     <NavigationProperty Name="Estados" Relationship="Self.FK_Comentarios_Estados" FromRole="Comentarios" ToRole="Estados" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Comentarios_Post" FromRole="Comentarios" ToRole="Posts" />
     <NavigationProperty Name="Denuncias" Relationship="Self.FK_Denuncias_Comentarios" FromRole="Comentarios" ToRole="Denuncias" />
@@ -142,13 +144,13 @@
     <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="FechaPublicacion" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+    <Property Name="IdCategoria" Type="Int32" />
     <Property Name="Autor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Puntaje" Type="Int32" />
-    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
     <Property Name="Eliminado" Type="Boolean" />
     <Property Name="Descripcion" Type="String" MaxLength="375" FixedLength="false" Unicode="true" />
-    <Property Name="IdJuego" Type="Int32" />
+    <Property Name="IdJuego" Type="Int32" Nullable="false" />
     <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Posts_AspNetUsers" FromRole="Posts" ToRole="AspNetUsers" />
     <NavigationProperty Name="Categorias" Relationship="Self.FK_Posts_Categorias" FromRole="Posts" ToRole="Categorias" />
     <NavigationProperty Name="Comentarios" Relationship="Self.FK_Comentarios_Post" FromRole="Posts" ToRole="Comentarios" />
@@ -215,6 +217,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Comentarios_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comentarios">
+        <PropertyRef Name="Autor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Denuncias_AspNetUsers">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
     <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="*" />
@@ -264,7 +278,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Posts_Categorias">
-    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
     <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Categorias">
@@ -276,7 +290,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Comentarios_Estados">
-    <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+    <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Estados">
@@ -324,7 +338,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Posts_Estados">
-    <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+    <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
     <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Estados">
@@ -336,7 +350,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Posts_Juegos">
-    <End Role="Juegos" Type="Self.Juegos" Multiplicity="0..1" />
+    <End Role="Juegos" Type="Self.Juegos" Multiplicity="1" />
     <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Juegos">
@@ -390,6 +404,10 @@
     <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comentarios_AspNetUsers" Association="Self.FK_Comentarios_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Comentarios" EntitySet="Comentarios" />
     </AssociationSet>
     <AssociationSet Name="FK_Denuncias_AspNetUsers" Association="Self.FK_Denuncias_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
