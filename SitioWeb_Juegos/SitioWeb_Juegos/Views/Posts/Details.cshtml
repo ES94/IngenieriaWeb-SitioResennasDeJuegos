@@ -1,5 +1,5 @@
 ﻿@model Datos.Posts
-     
+
 
 @{
     ViewBag.Title = "Details";
@@ -32,7 +32,7 @@
             <img class="img-responsive" src="@Model.Juegos.Imagen">
             <hr>
             <p>@Model.Contenido</p>
-            
+
 
             <strong>Tags:</strong>
 
@@ -68,55 +68,42 @@
 
 
             <!-- Lista todos los comentarios -->
-            <div class="media">
-                @foreach (var item in Model.Comentarios.ToList())
-                {
-                    <a class="pull-left">
-                        @item.AspNetUsers.UserName
-                    </a>
-                    <div class="media-body">
+                <div class="media">
+                    @foreach (var item in Model.Comentarios.ToList())
+                    {
+                        <a class="pull-left">
+                            @item.AspNetUsers.UserName
+                        </a>
+                        <div class="media-body">
 
-                        <h4 class="media-heading">
-                            <small>
-                                @item.FechaPublicacion
-                            </small>
-                                                       
-                            @item.Contenido
-                            
-                        </h4>
-                    </div>
-                }
-            </div>
-            <!-- the comment box -->
+                            <h4 class="media-heading">
+                                <small>
+                                    @item.FechaPublicacion
+                                </small>
+                            </h4>
+                            @item.Contenido  
+
+                            @if (User.Identity.Name == item.AspNetUsers.UserName)
+                            {
+                                <a class="btn btn-group" href="@Url.Action("EliminarComentario","Posts")">Eliminar</a>
+
+                                <a class="btn btn-group" href="@Url.Action("ModificarComentario","Posts")">Modificar</a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-group" href="@Url.Action("Denunciar","Posts")">Denunciar</a>
+                            }
+                        </div>
+
+
+                    }
+
+
+                </div>
 
             <hr>
 
-            <!-- Hace la magia para comentar y ver el comentario creado -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-            <script type="text/javascript">
-                $(function() {
-                    $("#BtnComentar").click(function () {
-                        var comment = $("#Comentario").val();
-                        if (comment.trim() != "") //Se puede ingresar espacios y el comentario se guarda igual, el .trim elimina el espacio en blanco y verifica si es vacio
-                        {
-                            $.ajax({
-                                url: '/Posts/CrearComentario/',
-                                data: { Comentario: comment, IdPost:@Model.Id},
-                                type: 'POST',
-                                dataType: 'json',
-                                success: function (data) {    
-                                    alert("Gracias por Comentar!");
-                                }                               
-                            })
-                        }
-                        else {
-                            alert("Error! Comentario Vacio");
-                        }
 
-                    })
-                });
-
-            </script>
             <!-- the comments -->
 
         </div>
@@ -180,3 +167,29 @@
         </div>
     </div>
 </div>
+
+<!-- Hace la magia para comentar y ver el comentario creado -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#BtnComentar").click(function () {
+            var comment = $("#Comentario").val();
+            if (comment.trim() != "") //Se puede ingresar espacios y el comentario se guarda igual, el .trim elimina el espacio en blanco y verifica si es vacio
+            {
+                $.ajax({
+                    url: '/Posts/CrearComentario/',
+                    data: { Comentario: comment, IdPost:@Model.Id},
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data) {
+                        alert("Gracias por Comentar!");
+                    }
+                })
+            }
+            else {
+                alert("Error! Comentario Vacio");
+            }
+
+        })
+    });
+</script>

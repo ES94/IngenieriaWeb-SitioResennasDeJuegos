@@ -1836,6 +1836,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\ImagenJuegos\" />
+    <Folder Include="Views\Comentarios\" />
     <Folder Include="Views\Top\" />
   </ItemGroup>
   <ItemGroup>

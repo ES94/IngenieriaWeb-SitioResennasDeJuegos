@@ -50,6 +50,8 @@
   <ItemGroup>
     <Compile Include="Comentario.cs" />
     <Compile Include="ConsultasComentarios.cs" />
+    <Compile Include="ConsultasPosts.cs" />
+    <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
