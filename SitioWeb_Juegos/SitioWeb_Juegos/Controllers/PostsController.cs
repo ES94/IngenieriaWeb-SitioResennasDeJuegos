@@ -152,6 +152,17 @@ namespace SitioWeb_Juegos.Controllers
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult EliminarComentario(int Id)
+        {
+            ConsultasComentarios consultascomentarios = new ConsultasComentarios();
+            Comentario model = new Comentario();
+            model.Id = Id;
+            var idgenerado = consultascomentarios.ModificarComentario(model,3);
+            return RedirectToAction("Details","Posts", new { id = idgenerado});
+        }
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
