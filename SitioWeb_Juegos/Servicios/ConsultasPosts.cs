@@ -25,7 +25,7 @@ namespace Servicios
             nuevopost.Eliminado = false;
             nuevopost.Puntaje = 0;
 
-            db.Posts.Add(nuevopost);
+            //db.Posts.Add(nuevopost);
             db.SaveChanges();
 
             var idgenerado = nuevopost.Id;
