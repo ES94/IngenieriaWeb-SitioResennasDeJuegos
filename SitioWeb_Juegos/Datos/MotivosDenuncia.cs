@@ -12,27 +12,21 @@ namespace Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class Comentarios
+    public partial class MotivosDenuncia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Comentarios()
+        public MotivosDenuncia()
         {
             this.ComentariosDenunciados = new HashSet<ComentariosDenunciados>();
+            this.PostDenunciados = new HashSet<PostDenunciados>();
         }
     
         public int Id { get; set; }
-        public string Titulo { get; set; }
-        public string Contenido { get; set; }
-        public System.DateTime FechaPublicacion { get; set; }
-        public string Autor { get; set; }
-        public int Post { get; set; }
-        public int IdEstado { get; set; }
-        public Nullable<bool> Eliminado { get; set; }
+        public string Descripcion { get; set; }
     
-        public virtual AspNetUsers AspNetUsers { get; set; }
-        public virtual Estados Estados { get; set; }
-        public virtual Posts Posts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ComentariosDenunciados> ComentariosDenunciados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PostDenunciados> PostDenunciados { get; set; }
     }
 }

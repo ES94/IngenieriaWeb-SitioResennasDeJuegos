@@ -1,8 +1,8 @@
-﻿@model IEnumerable<Datos.Denuncias>
+﻿@model IEnumerable<Datos.ComentariosDenunciados>
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
@@ -25,7 +25,7 @@
             @Html.DisplayNameFor(model => model.Comentarios.Titulo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Posts.Titulo)
+            @Html.DisplayNameFor(model => model.MotivosDenuncia.Descripcion)
         </th>
         <th></th>
     </tr>
@@ -45,7 +45,7 @@
             @Html.DisplayFor(modelItem => item.Comentarios.Titulo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Posts.Titulo)
+            @Html.DisplayFor(modelItem => item.MotivosDenuncia.Descripcion)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

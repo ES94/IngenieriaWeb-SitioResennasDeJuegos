@@ -7,12 +7,23 @@ using Datos;
 
 namespace Servicios
 {
-    class ConsultasDenuncias
+    public class ConsultasDenuncias
     {
         BDResennasJuegosEntities db = new BDResennasJuegosEntities();
-        public void CrearDenuncia(Denuncia model)
+        public int CrearDenunciaComentario(ComentarioDenunciado model)
         {
-            Denuncias nuevadenuncia = new Denuncias();
+            ComentariosDenunciados nuevocomentdenuncia = new ComentariosDenunciados();
+
+            nuevocomentdenuncia.Usuario = model.Usuario;
+            nuevocomentdenuncia.Fecha = DateTime.Now;
+            nuevocomentdenuncia.IdComentario = model.IdComentario;
+            nuevocomentdenuncia.Motivo = model.Motivo;
+            nuevocomentdenuncia.Descripcion = model.Descripcion;
+            db.ComentariosDenunciados.Add(nuevocomentdenuncia);
+            db.SaveChanges();
+
+            var idgenerado = nuevocomentdenuncia.Id;
+            return (idgenerado);
 
         }
     }

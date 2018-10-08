@@ -84,14 +84,14 @@
     <Property Name="IdEstado" Type="int" Nullable="false" />
     <Property Name="Eliminado" Type="bit" />
   </EntityType>
-  <EntityType Name="Denuncias">
+  <EntityType Name="ComentariosDenunciados">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdPost" Type="int" />
     <Property Name="IdComentario" Type="int" />
     <Property Name="Usuario" Type="nvarchar" MaxLength="128" />
+    <Property Name="Motivo" Type="int" />
     <Property Name="Fecha" Type="datetime" />
     <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
   </EntityType>
@@ -111,6 +111,13 @@
     <Property Name="IdCategoria" Type="int" Nullable="false" />
     <Property Name="Imagen" Type="nvarchar" MaxLength="500" />
   </EntityType>
+  <EntityType Name="MotivosDenuncia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
+  </EntityType>
   <EntityType Name="Noticias">
     <Key>
       <PropertyRef Name="Id" />
@@ -120,6 +127,17 @@
     <Property Name="Contenido" Type="nvarchar(max)" />
     <Property Name="Fecha" Type="datetime" />
     <Property Name="Foto" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="PostDenunciados">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPost" Type="int" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="128" />
+    <Property Name="Motivo" Type="int" />
+    <Property Name="Fecha" Type="datetime" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
   </EntityType>
   <EntityType Name="Posts">
     <Key>
@@ -144,6 +162,16 @@
     </Key>
     <Property Name="IdPost" Type="int" Nullable="false" />
     <Property Name="IdTags" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="Tags">
     <Key>
@@ -194,6 +222,42 @@
       </Principal>
       <Dependent Role="Comentarios">
         <PropertyRef Name="Post" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComentariosDenunciados_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="ComentariosDenunciados" Type="Self.ComentariosDenunciados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ComentariosDenunciados">
+        <PropertyRef Name="Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComentariosDenunciados_Comentarios">
+    <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="0..1" />
+    <End Role="ComentariosDenunciados" Type="Self.ComentariosDenunciados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comentarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ComentariosDenunciados">
+        <PropertyRef Name="IdComentario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ComentariosDenunciados_MotivosDenuncia">
+    <End Role="MotivosDenuncia" Type="Self.MotivosDenuncia" Multiplicity="0..1" />
+    <End Role="ComentariosDenunciados" Type="Self.ComentariosDenunciados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MotivosDenuncia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ComentariosDenunciados">
+        <PropertyRef Name="Motivo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -253,42 +317,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Denuncias_AspNetUsers">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-    <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="AspNetUsers">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Denuncias">
-        <PropertyRef Name="Usuario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Denuncias_Comentarios">
-    <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="0..1" />
-    <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Comentarios">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Denuncias">
-        <PropertyRef Name="IdComentario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Denuncias_Post">
-    <End Role="Posts" Type="Self.Posts" Multiplicity="0..1" />
-    <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Posts">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Denuncias">
-        <PropertyRef Name="IdPost" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Juegos_Categorias">
     <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
     <End Role="Juegos" Type="Self.Juegos" Multiplicity="*" />
@@ -298,6 +326,42 @@
       </Principal>
       <Dependent Role="Juegos">
         <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostDenunciados_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="PostDenunciados" Type="Self.PostDenunciados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostDenunciados">
+        <PropertyRef Name="Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostDenunciados_MotivosDenuncia">
+    <End Role="MotivosDenuncia" Type="Self.MotivosDenuncia" Multiplicity="0..1" />
+    <End Role="PostDenunciados" Type="Self.PostDenunciados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MotivosDenuncia">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostDenunciados">
+        <PropertyRef Name="Motivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PostDenunciados_Posts">
+    <End Role="Posts" Type="Self.Posts" Multiplicity="0..1" />
+    <End Role="PostDenunciados" Type="Self.PostDenunciados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Posts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostDenunciados">
+        <PropertyRef Name="IdPost" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -406,12 +470,15 @@
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Comentarios" EntityType="Self.Comentarios" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Denuncias" EntityType="Self.Denuncias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ComentariosDenunciados" EntityType="Self.ComentariosDenunciados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Juegos" EntityType="Self.Juegos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MotivosDenuncia" EntityType="Self.MotivosDenuncia" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Noticias" EntityType="Self.Noticias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostDenunciados" EntityType="Self.PostDenunciados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PostsTags" EntityType="Self.PostsTags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Votos" EntityType="Self.Votos" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Comentarios_AspNetUsers" Association="Self.FK_Comentarios_AspNetUsers">
@@ -425,6 +492,18 @@
     <AssociationSet Name="FK_Comentarios_Post" Association="Self.FK_Comentarios_Post">
       <End Role="Posts" EntitySet="Posts" />
       <End Role="Comentarios" EntitySet="Comentarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComentariosDenunciados_AspNetUsers" Association="Self.FK_ComentariosDenunciados_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="ComentariosDenunciados" EntitySet="ComentariosDenunciados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComentariosDenunciados_Comentarios" Association="Self.FK_ComentariosDenunciados_Comentarios">
+      <End Role="Comentarios" EntitySet="Comentarios" />
+      <End Role="ComentariosDenunciados" EntitySet="ComentariosDenunciados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ComentariosDenunciados_MotivosDenuncia" Association="Self.FK_ComentariosDenunciados_MotivosDenuncia">
+      <End Role="MotivosDenuncia" EntitySet="MotivosDenuncia" />
+      <End Role="ComentariosDenunciados" EntitySet="ComentariosDenunciados" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -442,21 +521,21 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
     </AssociationSet>
-    <AssociationSet Name="FK_Denuncias_AspNetUsers" Association="Self.FK_Denuncias_AspNetUsers">
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="Denuncias" EntitySet="Denuncias" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Denuncias_Comentarios" Association="Self.FK_Denuncias_Comentarios">
-      <End Role="Comentarios" EntitySet="Comentarios" />
-      <End Role="Denuncias" EntitySet="Denuncias" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Denuncias_Post" Association="Self.FK_Denuncias_Post">
-      <End Role="Posts" EntitySet="Posts" />
-      <End Role="Denuncias" EntitySet="Denuncias" />
-    </AssociationSet>
     <AssociationSet Name="FK_Juegos_Categorias" Association="Self.FK_Juegos_Categorias">
       <End Role="Categorias" EntitySet="Categorias" />
       <End Role="Juegos" EntitySet="Juegos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostDenunciados_AspNetUsers" Association="Self.FK_PostDenunciados_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="PostDenunciados" EntitySet="PostDenunciados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostDenunciados_MotivosDenuncia" Association="Self.FK_PostDenunciados_MotivosDenuncia">
+      <End Role="MotivosDenuncia" EntitySet="MotivosDenuncia" />
+      <End Role="PostDenunciados" EntitySet="PostDenunciados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PostDenunciados_Posts" Association="Self.FK_PostDenunciados_Posts">
+      <End Role="Posts" EntitySet="Posts" />
+      <End Role="PostDenunciados" EntitySet="PostDenunciados" />
     </AssociationSet>
     <AssociationSet Name="FK_Posts_AspNetUsers" Association="Self.FK_Posts_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />

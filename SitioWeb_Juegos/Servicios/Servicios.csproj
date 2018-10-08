@@ -49,10 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comentario.cs" />
+    <Compile Include="ComentarioDenunciado.cs" />
     <Compile Include="ConsultasComentarios.cs" />
     <Compile Include="ConsultasDenuncias.cs" />
     <Compile Include="ConsultasPosts.cs" />
-    <Compile Include="Denuncia.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">
-      <Project>{046920dd-f525-4b7a-a946-73c5901fda6b}</Project>
+      <Project>{927c42de-7dd5-41a0-8fdd-518f51f7cf3a}</Project>
       <Name>Datos</Name>
     </ProjectReference>
   </ItemGroup>

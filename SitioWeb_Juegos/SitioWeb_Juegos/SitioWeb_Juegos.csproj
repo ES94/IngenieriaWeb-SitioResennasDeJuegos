@@ -199,13 +199,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminCategoriasController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\AdminDenunciasController.cs" />
     <Compile Include="Controllers\AdminEstadosController.cs" />
     <Compile Include="Controllers\AdminJuegosController.cs" />
     <Compile Include="Controllers\AdminNoticiasController.cs" />
     <Compile Include="Controllers\AdminPostsController.cs" />
     <Compile Include="Controllers\AdminTagsController.cs" />
     <Compile Include="Controllers\AdminUsuariosController.cs" />
+    <Compile Include="Controllers\DenunciasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
@@ -1801,11 +1801,6 @@
     <Content Include="Views\AdminCategorias\Details.cshtml" />
     <Content Include="Views\AdminCategorias\Edit.cshtml" />
     <Content Include="Views\AdminCategorias\Index.cshtml" />
-    <Content Include="Views\AdminDenuncias\Create.cshtml" />
-    <Content Include="Views\AdminDenuncias\Delete.cshtml" />
-    <Content Include="Views\AdminDenuncias\Details.cshtml" />
-    <Content Include="Views\AdminDenuncias\Edit.cshtml" />
-    <Content Include="Views\AdminDenuncias\Index.cshtml" />
     <Content Include="Views\AdminEstados\Create.cshtml" />
     <Content Include="Views\AdminEstados\Delete.cshtml" />
     <Content Include="Views\AdminEstados\Details.cshtml" />
@@ -1832,11 +1827,15 @@
     <Content Include="Views\AdminNoticias\Edit.cshtml" />
     <Content Include="Views\AdminNoticias\Index.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Denuncias\Create.cshtml" />
+    <Content Include="Views\Denuncias\Delete.cshtml" />
+    <Content Include="Views\Denuncias\Details.cshtml" />
+    <Content Include="Views\Denuncias\Edit.cshtml" />
+    <Content Include="Views\Denuncias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\ImagenJuegos\" />
-    <Folder Include="Views\Comentarios\" />
     <Folder Include="Views\Top\" />
   </ItemGroup>
   <ItemGroup>
@@ -1856,7 +1855,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">
-      <Project>{046920dd-f525-4b7a-a946-73c5901fda6b}</Project>
+      <Project>{927c42de-7dd5-41a0-8fdd-518f51f7cf3a}</Project>
       <Name>Datos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Servicios\Servicios.csproj">

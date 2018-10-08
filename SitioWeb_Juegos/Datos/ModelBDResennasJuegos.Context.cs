@@ -32,11 +32,14 @@ namespace Datos
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Comentarios> Comentarios { get; set; }
-        public virtual DbSet<Denuncias> Denuncias { get; set; }
+        public virtual DbSet<ComentariosDenunciados> ComentariosDenunciados { get; set; }
         public virtual DbSet<Estados> Estados { get; set; }
         public virtual DbSet<Juegos> Juegos { get; set; }
+        public virtual DbSet<MotivosDenuncia> MotivosDenuncia { get; set; }
         public virtual DbSet<Noticias> Noticias { get; set; }
+        public virtual DbSet<PostDenunciados> PostDenunciados { get; set; }
         public virtual DbSet<Posts> Posts { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tags> Tags { get; set; }
         public virtual DbSet<Votos> Votos { get; set; }
     }

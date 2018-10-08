@@ -20,7 +20,8 @@ namespace Datos
             this.AspNetUserClaims = new HashSet<AspNetUserClaims>();
             this.AspNetUserLogins = new HashSet<AspNetUserLogins>();
             this.Comentarios = new HashSet<Comentarios>();
-            this.Denuncias = new HashSet<Denuncias>();
+            this.ComentariosDenunciados = new HashSet<ComentariosDenunciados>();
+            this.PostDenunciados = new HashSet<PostDenunciados>();
             this.Posts = new HashSet<Posts>();
             this.Votos = new HashSet<Votos>();
             this.AspNetRoles = new HashSet<AspNetRoles>();
@@ -49,7 +50,9 @@ namespace Datos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comentarios> Comentarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Denuncias> Denuncias { get; set; }
+        public virtual ICollection<ComentariosDenunciados> ComentariosDenunciados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PostDenunciados> PostDenunciados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Posts> Posts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -12,17 +12,17 @@ namespace Datos
     using System;
     using System.Collections.Generic;
     
-    public partial class Denuncias
+    public partial class ComentariosDenunciados
     {
         public int Id { get; set; }
-        public Nullable<int> IdPost { get; set; }
         public Nullable<int> IdComentario { get; set; }
         public string Usuario { get; set; }
+        public Nullable<int> Motivo { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
         public string Descripcion { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual Comentarios Comentarios { get; set; }
-        public virtual Posts Posts { get; set; }
+        public virtual MotivosDenuncia MotivosDenuncia { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{046920DD-F525-4B7A-A946-73C5901FDA6B}</ProjectGuid>
+    <ProjectGuid>{927C42DE-7DD5-41A0-8FDD-518F51F7CF3A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Datos</RootNamespace>
@@ -69,10 +69,10 @@
     <Compile Include="Comentarios.cs">
       <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
     </Compile>
-    <Compile Include="C__MigrationHistory.cs">
+    <Compile Include="ComentariosDenunciados.cs">
       <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
     </Compile>
-    <Compile Include="Denuncias.cs">
+    <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
     </Compile>
     <Compile Include="Estados.cs">
@@ -96,13 +96,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelBDResennasJuegos.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MotivosDenuncia.cs">
+      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Noticias.cs">
+      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostDenunciados.cs">
       <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
     </Compile>
     <Compile Include="Posts.cs">
       <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tags.cs">
       <DependentUpon>ModelBDResennasJuegos.tt</DependentUpon>
     </Compile>

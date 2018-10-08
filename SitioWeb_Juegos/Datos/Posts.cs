@@ -18,7 +18,7 @@ namespace Datos
         public Posts()
         {
             this.Comentarios = new HashSet<Comentarios>();
-            this.Denuncias = new HashSet<Denuncias>();
+            this.PostDenunciados = new HashSet<PostDenunciados>();
             this.Votos = new HashSet<Votos>();
             this.Tags = new HashSet<Tags>();
         }
@@ -39,10 +39,10 @@ namespace Datos
         public virtual Categorias Categorias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comentarios> Comentarios { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Denuncias> Denuncias { get; set; }
         public virtual Estados Estados { get; set; }
         public virtual Juegos Juegos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PostDenunciados> PostDenunciados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Votos> Votos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
