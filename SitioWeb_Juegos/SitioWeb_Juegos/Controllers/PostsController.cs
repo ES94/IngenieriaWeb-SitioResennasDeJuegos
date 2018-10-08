@@ -157,8 +157,9 @@ namespace SitioWeb_Juegos.Controllers
             ConsultasComentarios consultascomentarios = new ConsultasComentarios();
             Comentario model = new Comentario();
             model.Id = Id;
-            var idgenerado = consultascomentarios.ModificarComentario(model,3);
-            return RedirectToAction("Details","Posts", new { id = idgenerado});
+            var idpost = consultascomentarios.ModificarComentario(model,true);
+
+            return RedirectToAction("Details","Posts", new { id = idpost});
         }
 
 

@@ -86,8 +86,6 @@
                             @if (User.Identity.Name == item.AspNetUsers.UserName)
                             {
                                 <a class="btn btn-group" id="BtnEliminar" type="submit" href="@Url.Action("EliminarComentario","Posts",new { Id = item.Id })">Eliminar</a>
-
-                                <a class="btn btn-group" id="BtnModificar" type="submit" href="@Url.Action("ModificarComentario","Posts",new { id = item.Id })">Modificar</a>
                             }
                             else
                             {

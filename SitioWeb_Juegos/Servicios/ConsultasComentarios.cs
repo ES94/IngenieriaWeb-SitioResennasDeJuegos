@@ -26,13 +26,13 @@ namespace Servicios
             return (idgenerado);
         }
 
-        public int ModificarComentario(Comentario model, int idestado)
+        public int ModificarComentario(Comentario model, bool eliminar)
         {
             Comentarios comentarioActual = db.Comentarios.Where(x => x.Id == model.Id).SingleOrDefault();
 
             if (comentarioActual != null)
             {
-                if (idestado == 3)
+                if (eliminar)
                 {
                     comentarioActual.IdEstado = 3;
                     comentarioActual.Eliminado = true;

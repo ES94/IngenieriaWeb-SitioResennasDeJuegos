@@ -20,7 +20,7 @@
             </ol>
         </div>
     </div>
-    @foreach (var Po in Model)
+    @foreach (var Po in Model.OrderByDescending(x => x.FechaPublicacion))
     {
         <div class="row">
             <div class="col-md-1">
