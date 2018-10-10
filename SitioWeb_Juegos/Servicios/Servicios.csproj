@@ -63,8 +63,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">
-      <Project>{927c42de-7dd5-41a0-8fdd-518f51f7cf3a}</Project>
+      <Project>{30fef299-17d0-4aef-9979-12b7fc21cded}</Project>
       <Name>Datos</Name>
     </ProjectReference>
   </ItemGroup>

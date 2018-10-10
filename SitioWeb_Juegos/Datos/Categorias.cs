@@ -18,15 +18,13 @@ namespace Datos
         public Categorias()
         {
             this.Juegos = new HashSet<Juegos>();
-            this.Posts = new HashSet<Posts>();
         }
     
         public int Id { get; set; }
-        public string Categoria { get; set; }
+        public Nullable<bool> Eliminado { get; set; }
+        public string Descripcion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Juegos> Juegos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Posts> Posts { get; set; }
     }
 }

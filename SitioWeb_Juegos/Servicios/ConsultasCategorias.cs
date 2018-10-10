@@ -13,7 +13,7 @@ namespace Servicios
         public int CrearCategoria(Categoria model)
         {
             Categorias nuevacategoria = new Categorias();
-            nuevacategoria.Categoria = model.Descripcion;
+            nuevacategoria.Descripcion = model.Descripcion;
             db.Categorias.Add(nuevacategoria);
             db.SaveChanges();
             int idgenerado = nuevacategoria.Id;
@@ -28,11 +28,11 @@ namespace Servicios
             {
                 if (eliminar)
                 {
-                    db.Categorias.Eliminado = true;
+                    //db.Categorias.Eliminado = true;
                 }
                 else
                 {
-                    categoriaActual.Categoria = model.Descripcion;
+                    categoriaActual.Descripcion = model.Descripcion;
                 }
                 db.SaveChanges();
             }

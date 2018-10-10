@@ -19,7 +19,7 @@ namespace SitioWeb_Juegos.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            var posts = db.Posts.Include(p => p.AspNetUsers).Include(p => p.Categorias).Include(p => p.Estados).Include(p => p.Juegos).Where(x => x.Estados.Descripcion == "Activo");
+            var posts = db.Posts.Include(p => p.AspNetUsers).Include(p => p.Descripcion).Include(p => p.Estados).Include(p => p.Juegos).Where(x => x.Estados.Descripcion == "Activo");
             return View(posts.ToList());
         }
 
@@ -67,7 +67,6 @@ namespace SitioWeb_Juegos.Controllers
             }
 
             ViewBag.Autor = new SelectList(db.AspNetUsers, "Id", "Email", posts.Autor);
-            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Categoria", posts.IdCategoria);
             ViewBag.IdEstado = new SelectList(db.Estados, "Id", "Descripcion", posts.IdEstado);
             ViewBag.IdJuego = new SelectList(db.Juegos, "Id", "Descripcion", posts.IdJuego);
             
@@ -87,7 +86,6 @@ namespace SitioWeb_Juegos.Controllers
                 return HttpNotFound();
             }
             ViewBag.Autor = new SelectList(db.AspNetUsers, "Id", "Email", posts.Autor);
-            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Categoria", posts.IdCategoria);
             ViewBag.IdEstado = new SelectList(db.Estados, "Id", "Descripcion", posts.IdEstado);
             ViewBag.IdJuego = new SelectList(db.Juegos, "Id", "Descripcion", posts.IdJuego);
             return View(posts);
@@ -107,7 +105,6 @@ namespace SitioWeb_Juegos.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Autor = new SelectList(db.AspNetUsers, "Id", "Email", posts.Autor);
-            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Categoria", posts.IdCategoria);
             ViewBag.IdEstado = new SelectList(db.Estados, "Id", "Descripcion", posts.IdEstado);
             ViewBag.IdJuego = new SelectList(db.Juegos, "Id", "Descripcion", posts.IdJuego);
             return View(posts);

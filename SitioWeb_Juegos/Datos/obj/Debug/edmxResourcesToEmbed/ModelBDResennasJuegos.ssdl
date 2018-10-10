@@ -63,13 +63,15 @@
     <Property Name="PuntajeTotal" Type="int" />
     <Property Name="Avatar" Type="nvarchar" MaxLength="500" />
     <Property Name="Baneado" Type="bit" />
+    <Property Name="IdEstado" Type="int" />
   </EntityType>
   <EntityType Name="Categorias">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Categoria" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Eliminado" Type="bit" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Comentarios">
     <Key>
@@ -110,6 +112,7 @@
     <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="IdCategoria" Type="int" Nullable="false" />
     <Property Name="Imagen" Type="nvarchar" MaxLength="500" />
+    <Property Name="Eliminado" Type="bit" />
   </EntityType>
   <EntityType Name="MotivosDenuncia">
     <Key>
@@ -126,7 +129,9 @@
     <Property Name="Titulo" Type="nvarchar" MaxLength="200" />
     <Property Name="Contenido" Type="nvarchar(max)" />
     <Property Name="Fecha" Type="datetime" />
+    <Property Name="Eliminado" Type="bit" />
     <Property Name="Foto" Type="nvarchar" MaxLength="500" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="375" />
   </EntityType>
   <EntityType Name="PostDenunciados">
     <Key>
@@ -147,7 +152,6 @@
     <Property Name="Titulo" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Contenido" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FechaPublicacion" Type="datetime" Nullable="false" />
-    <Property Name="IdCategoria" Type="int" />
     <Property Name="Autor" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="Puntaje" Type="int" />
     <Property Name="IdEstado" Type="int" Nullable="false" />
@@ -189,6 +193,18 @@
     <Property Name="Usuario" Type="nvarchar" MaxLength="128" />
     <Property Name="Fecha" Type="datetime" />
   </EntityType>
+  <Association Name="FK_AspNetUsers_Estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Comentarios_AspNetUsers">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
     <End Role="Comentarios" Type="Self.Comentarios" Multiplicity="*" />
@@ -377,18 +393,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Posts_Categorias">
-    <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
-    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Categorias">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Posts">
-        <PropertyRef Name="IdCategoria" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Posts_Estados">
     <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
     <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
@@ -481,6 +485,10 @@
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tags" EntityType="Self.Tags" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Votos" EntityType="Self.Votos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AspNetUsers_Estados" Association="Self.FK_AspNetUsers_Estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
     <AssociationSet Name="FK_Comentarios_AspNetUsers" Association="Self.FK_Comentarios_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Comentarios" EntitySet="Comentarios" />
@@ -539,10 +547,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Posts_AspNetUsers" Association="Self.FK_Posts_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-      <End Role="Posts" EntitySet="Posts" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Posts_Categorias" Association="Self.FK_Posts_Categorias">
-      <End Role="Categorias" EntitySet="Categorias" />
       <End Role="Posts" EntitySet="Posts" />
     </AssociationSet>
     <AssociationSet Name="FK_Posts_Estados" Association="Self.FK_Posts_Estados">

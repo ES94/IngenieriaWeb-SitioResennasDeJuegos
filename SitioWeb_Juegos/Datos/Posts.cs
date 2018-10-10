@@ -27,7 +27,6 @@ namespace Datos
         public string Titulo { get; set; }
         public string Contenido { get; set; }
         public System.DateTime FechaPublicacion { get; set; }
-        public Nullable<int> IdCategoria { get; set; }
         public string Autor { get; set; }
         public Nullable<int> Puntaje { get; set; }
         public int IdEstado { get; set; }
@@ -36,7 +35,6 @@ namespace Datos
         public int IdJuego { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
-        public virtual Categorias Categorias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comentarios> Comentarios { get; set; }
         public virtual Estados Estados { get; set; }

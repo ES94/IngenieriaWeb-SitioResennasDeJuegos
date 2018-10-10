@@ -4,33 +4,33 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="981fd78053434ba6b28fd46c4b2463f7" Name="Diagram1">
-        <EntityTypeShape EntityType="BDResennasJuegosModel.C__MigrationHistory" Width="1.5" PointX="9.75" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.AspNetUsers" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.Categorias" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.Comentarios" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.ComentariosDenunciados" Width="1.5" PointX="12.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.Estados" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.Juegos" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.MotivosDenuncia" Width="1.5" PointX="10.5" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.Noticias" Width="1.5" PointX="11.75" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.PostDenunciados" Width="1.5" PointX="10.5" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.Posts" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.sysdiagrams" Width="1.5" PointX="12.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.Tags" Width="1.5" PointX="7.5" PointY="15.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BDResennasJuegosModel.Votos" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+      <Diagram DiagramId="da7be52d49754ca0aaf1a8a3e505ac8f" Name="Diagram1">
+        <EntityTypeShape EntityType="BDResennasJuegosModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.AspNetUsers" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.Categorias" Width="1.5" PointX="3.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.Comentarios" Width="1.5" PointX="8.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.ComentariosDenunciados" Width="1.5" PointX="10.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.Estados" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.Juegos" Width="1.5" PointX="6" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.MotivosDenuncia" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.Noticias" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.PostDenunciados" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.Posts" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.Tags" Width="1.5" PointX="10.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDResennasJuegosModel.Votos" Width="1.5" PointX="13.5" PointY="11.375" IsExpanded="true" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BDResennasJuegosModel.FK_AspNetUsers_Estados" ManuallyRouted="false" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_Comentarios_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_ComentariosDenunciados_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_PostDenunciados_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_Posts_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_Votos_AspNetUsers" ManuallyRouted="false" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_Juegos_Categorias" ManuallyRouted="false" />
-        <AssociationConnector Association="BDResennasJuegosModel.FK_Posts_Categorias" ManuallyRouted="false" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_Comentarios_Estados" ManuallyRouted="false" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_Comentarios_Post" ManuallyRouted="false" />
         <AssociationConnector Association="BDResennasJuegosModel.FK_ComentariosDenunciados_Comentarios" ManuallyRouted="false" />

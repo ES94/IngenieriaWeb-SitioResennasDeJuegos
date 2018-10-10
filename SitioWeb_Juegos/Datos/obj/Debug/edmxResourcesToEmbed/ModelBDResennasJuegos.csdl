@@ -58,8 +58,10 @@
     <Property Name="PuntajeTotal" Type="Int32" />
     <Property Name="Avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Baneado" Type="Boolean" />
+    <Property Name="IdEstado" Type="Int32" />
     <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="Estados" Relationship="Self.FK_AspNetUsers_Estados" FromRole="AspNetUsers" ToRole="Estados" />
     <NavigationProperty Name="Comentarios" Relationship="Self.FK_Comentarios_AspNetUsers" FromRole="AspNetUsers" ToRole="Comentarios" />
     <NavigationProperty Name="ComentariosDenunciados" Relationship="Self.FK_ComentariosDenunciados_AspNetUsers" FromRole="AspNetUsers" ToRole="ComentariosDenunciados" />
     <NavigationProperty Name="PostDenunciados" Relationship="Self.FK_PostDenunciados_AspNetUsers" FromRole="AspNetUsers" ToRole="PostDenunciados" />
@@ -72,9 +74,9 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Categoria" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Eliminado" Type="Boolean" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Juegos" Relationship="Self.FK_Juegos_Categorias" FromRole="Categorias" ToRole="Juegos" />
-    <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Categorias" FromRole="Categorias" ToRole="Posts" />
   </EntityType>
   <EntityType Name="Comentarios">
     <Key>
@@ -113,6 +115,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_AspNetUsers_Estados" FromRole="Estados" ToRole="AspNetUsers" />
     <NavigationProperty Name="Comentarios" Relationship="Self.FK_Comentarios_Estados" FromRole="Estados" ToRole="Comentarios" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Estados" FromRole="Estados" ToRole="Posts" />
   </EntityType>
@@ -124,6 +127,7 @@
     <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IdCategoria" Type="Int32" Nullable="false" />
     <Property Name="Imagen" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Eliminado" Type="Boolean" />
     <NavigationProperty Name="Categorias" Relationship="Self.FK_Juegos_Categorias" FromRole="Juegos" ToRole="Categorias" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Juegos" FromRole="Juegos" ToRole="Posts" />
   </EntityType>
@@ -144,7 +148,9 @@
     <Property Name="Titulo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Fecha" Type="DateTime" Precision="3" />
+    <Property Name="Eliminado" Type="Boolean" />
     <Property Name="Foto" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Descripcion" Type="String" MaxLength="375" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="PostDenunciados">
     <Key>
@@ -168,7 +174,6 @@
     <Property Name="Titulo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="FechaPublicacion" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="IdCategoria" Type="Int32" />
     <Property Name="Autor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Puntaje" Type="Int32" />
     <Property Name="IdEstado" Type="Int32" Nullable="false" />
@@ -176,7 +181,6 @@
     <Property Name="Descripcion" Type="String" MaxLength="375" FixedLength="false" Unicode="true" />
     <Property Name="IdJuego" Type="Int32" Nullable="false" />
     <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Posts_AspNetUsers" FromRole="Posts" ToRole="AspNetUsers" />
-    <NavigationProperty Name="Categorias" Relationship="Self.FK_Posts_Categorias" FromRole="Posts" ToRole="Categorias" />
     <NavigationProperty Name="Comentarios" Relationship="Self.FK_Comentarios_Post" FromRole="Posts" ToRole="Comentarios" />
     <NavigationProperty Name="Estados" Relationship="Self.FK_Posts_Estados" FromRole="Posts" ToRole="Estados" />
     <NavigationProperty Name="Juegos" Relationship="Self.FK_Posts_Juegos" FromRole="Posts" ToRole="Juegos" />
@@ -238,6 +242,18 @@
       </Principal>
       <Dependent Role="AspNetUserLogins">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_Estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUsers">
+        <PropertyRef Name="IdEstado" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -309,18 +325,6 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Juegos">
-        <PropertyRef Name="IdCategoria" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Posts_Categorias">
-    <End Role="Categorias" Type="Self.Categorias" Multiplicity="0..1" />
-    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Categorias">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Posts">
         <PropertyRef Name="IdCategoria" />
       </Dependent>
     </ReferentialConstraint>
@@ -467,6 +471,10 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
     </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_Estados" Association="Self.FK_AspNetUsers_Estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
     <AssociationSet Name="FK_Comentarios_AspNetUsers" Association="Self.FK_Comentarios_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Comentarios" EntitySet="Comentarios" />
@@ -490,10 +498,6 @@
     <AssociationSet Name="FK_Juegos_Categorias" Association="Self.FK_Juegos_Categorias">
       <End Role="Categorias" EntitySet="Categorias" />
       <End Role="Juegos" EntitySet="Juegos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Posts_Categorias" Association="Self.FK_Posts_Categorias">
-      <End Role="Categorias" EntitySet="Categorias" />
-      <End Role="Posts" EntitySet="Posts" />
     </AssociationSet>
     <AssociationSet Name="FK_Comentarios_Estados" Association="Self.FK_Comentarios_Estados">
       <End Role="Estados" EntitySet="Estados" />

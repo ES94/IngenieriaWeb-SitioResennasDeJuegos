@@ -19,7 +19,7 @@
             @Html.DisplayNameFor(model => model.Imagen)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Categorias.Categoria)
+            @Html.DisplayNameFor(model => model.Categorias.Descripcion)
         </th>
         <th></th>
     </tr>
@@ -33,7 +33,7 @@
             <img width="75" src="@item.Imagen" />
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Categorias.Categoria)
+            @Html.DisplayFor(modelItem => item.Categorias.Descripcion)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

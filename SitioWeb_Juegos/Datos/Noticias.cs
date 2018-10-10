@@ -18,6 +18,8 @@ namespace Datos
         public string Titulo { get; set; }
         public string Contenido { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
+        public Nullable<bool> Eliminado { get; set; }
         public string Foto { get; set; }
+        public string Descripcion { get; set; }
     }
 }

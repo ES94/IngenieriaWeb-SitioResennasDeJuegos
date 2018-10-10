@@ -24,6 +24,7 @@ namespace Datos
         public string Descripcion { get; set; }
         public int IdCategoria { get; set; }
         public string Imagen { get; set; }
+        public Nullable<bool> Eliminado { get; set; }
     
         public virtual Categorias Categorias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

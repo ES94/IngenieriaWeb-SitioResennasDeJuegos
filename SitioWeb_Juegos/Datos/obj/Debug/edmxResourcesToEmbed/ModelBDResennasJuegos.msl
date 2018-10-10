@@ -56,6 +56,7 @@
           <ScalarProperty Name="PuntajeTotal" ColumnName="PuntajeTotal" />
           <ScalarProperty Name="Avatar" ColumnName="Avatar" />
           <ScalarProperty Name="Baneado" ColumnName="Baneado" />
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -63,7 +64,8 @@
       <EntityTypeMapping TypeName="BDResennasJuegosModel.Categorias">
         <MappingFragment StoreEntitySet="Categorias">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -108,6 +110,7 @@
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
           <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -126,7 +129,9 @@
           <ScalarProperty Name="Titulo" ColumnName="Titulo" />
           <ScalarProperty Name="Contenido" ColumnName="Contenido" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -149,7 +154,6 @@
           <ScalarProperty Name="Titulo" ColumnName="Titulo" />
           <ScalarProperty Name="Contenido" ColumnName="Contenido" />
           <ScalarProperty Name="FechaPublicacion" ColumnName="FechaPublicacion" />
-          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
           <ScalarProperty Name="Autor" ColumnName="Autor" />
           <ScalarProperty Name="Puntaje" ColumnName="Puntaje" />
           <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
