@@ -11,3 +11,17 @@ C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_J
 C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csproj.CopyComplete
 C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.dll
 C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.pdb
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\Datos.dll.config
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\Datos.dll
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\Datos.pdb
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\EntityFramework.dll
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\EntityFramework.xml
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\es\EntityFramework.resources.dll
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.dll
+C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.pdb

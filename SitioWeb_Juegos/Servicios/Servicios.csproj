@@ -55,6 +55,8 @@
     <Compile Include="ConsultasComentarios.cs" />
     <Compile Include="ConsultasDenuncias.cs" />
     <Compile Include="ConsultasPosts.cs" />
+    <Compile Include="ConsultasUsuarios.cs" />
+    <Compile Include="Usuario.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
