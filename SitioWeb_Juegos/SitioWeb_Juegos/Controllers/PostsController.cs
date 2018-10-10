@@ -139,47 +139,12 @@ namespace SitioWeb_Juegos.Controllers
             return RedirectToAction("Index");
         }
 
-        public JsonResult CrearComentario(string comentario, int IdPost)
-        {
-            ConsultasComentarios consultascomentarios = new ConsultasComentarios();
-            var IdAutor = User.Identity.GetUserId();
-
-            Comentario model = new Comentario();
-            model.Autor = IdAutor;
-            model.Contenido = comentario;
-            model.Post = IdPost;
-            var idgenerado = consultascomentarios.CrearComentario(model);
-            return Json(false, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult EliminarComentario(int Id)
-        {
-            ConsultasComentarios consultascomentarios = new ConsultasComentarios();
-            Comentario model = new Comentario();
-            model.Id = Id;
-            var idpost = consultascomentarios.ModificarComentario(model,true);
-
-            return RedirectToAction("Details","Posts", new { id = idpost});
-        }
+        
 
         public ActionResult Denunciar()
         {
             ViewBag.Motivo = new SelectList(db.MotivosDenuncia, "Id", "Descripcion");
             return View();
-        }
-
-        public ActionResult CrearDenunciaComentario(string descripcion, int id, int motivo)
-        {
-            ConsultasDenuncias consultasdenuncias = new ConsultasDenuncias();
-            var IdDenunciante = User.Identity.GetUserId();
-            ComentarioDenunciado model = new ComentarioDenunciado();
-            model.Usuario = IdDenunciante;
-            model.Descripcion = descripcion;
-            model.IdComentario = id;
-            model.Motivo = motivo;
-            var idgenerado = consultasdenuncias.CrearDenunciaComentario(model);
-
-            return RedirectToAction("Details", "Posts" /*new { id = idpost }*/);
         }
 
         protected override void Dispose(bool disposing)
