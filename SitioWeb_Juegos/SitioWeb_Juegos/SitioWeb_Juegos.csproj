@@ -205,6 +205,7 @@
     <Compile Include="Controllers\AdminPostsController.cs" />
     <Compile Include="Controllers\AdminTagsController.cs" />
     <Compile Include="Controllers\AdminUsuariosController.cs" />
+    <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\DenunciasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1846,6 +1847,11 @@
     <Content Include="Views\Shared\_NavigationTop.cshtml" />
     <Content Include="Views\Shared\_SidebarAdmin.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Categorias\Index.cshtml" />
+    <Content Include="Views\Categorias\Create.cshtml" />
+    <Content Include="Views\Categorias\Details.cshtml" />
+    <Content Include="Views\Categorias\Delete.cshtml" />
+    <Content Include="Views\Categorias\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
