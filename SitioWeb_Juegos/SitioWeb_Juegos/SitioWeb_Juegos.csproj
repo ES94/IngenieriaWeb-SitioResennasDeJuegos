@@ -1833,11 +1833,11 @@
     <Content Include="Views\Denuncias\Details.cshtml" />
     <Content Include="Views\Denuncias\Edit.cshtml" />
     <Content Include="Views\Denuncias\Index.cshtml" />
-    <Content Include="Views\Comentarios\CrearComentario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\ImagenJuegos\" />
+    <Folder Include="Views\Comentarios\" />
     <Folder Include="Views\Top\" />
   </ItemGroup>
   <ItemGroup>

@@ -147,20 +147,6 @@ namespace SitioWeb_Juegos.Controllers
             return View();
         }
 
-        public ActionResult CrearDenunciaComentario(string descripcion, int id, int motivo)
-        {
-            ConsultasDenuncias consultasdenuncias = new ConsultasDenuncias();
-            var IdDenunciante = User.Identity.GetUserId();
-            ComentarioDenunciado model = new ComentarioDenunciado();
-            model.Usuario = IdDenunciante;
-            model.Descripcion = descripcion;
-            model.IdComentario = id;
-            model.Motivo = motivo;
-            var idgenerado = consultasdenuncias.CrearDenunciaComentario(model);
-
-            return RedirectToAction("Details", "Posts" /*new { id = idpost }*/);
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
