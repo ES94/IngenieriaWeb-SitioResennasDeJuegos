@@ -1712,7 +1712,6 @@
     <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\AdminUsuarios\Delete.cshtml" />
     <Content Include="Views\AdminUsuarios\Details.cshtml" />
-    <Content Include="Views\AdminUsuarios\Edit.cshtml" />
     <Content Include="Views\AdminUsuarios\Index.cshtml" />
     <Content Include="Views\AdminCategorias\Create.cshtml" />
     <Content Include="Views\AdminCategorias\Delete.cshtml" />
@@ -1851,6 +1850,8 @@
     <Content Include="Views\Categorias\Details.cshtml" />
     <Content Include="Views\Categorias\Delete.cshtml" />
     <Content Include="Views\Categorias\Edit.cshtml" />
+    <Content Include="Views\AdminUsuarios\Create.cshtml" />
+    <Content Include="Views\AdminUsuarios\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -25,11 +25,11 @@ namespace SitioWeb_Juegos.Controllers
             return View();
         }
 
-        // GET: Admin/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Admin/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: Admin/Create
         [HttpPost]

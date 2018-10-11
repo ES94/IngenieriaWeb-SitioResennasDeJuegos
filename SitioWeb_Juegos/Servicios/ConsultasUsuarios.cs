@@ -9,14 +9,16 @@ namespace Servicios
 {
     public class ConsultasUsuarios
     {
-        public List<Usuario> ObtenerUsuarios()
+
+
+        public List<AspNetUsers> ObtenerUsuarios()
         {
             BDResennasJuegosEntities contexto = new BDResennasJuegosEntities();
             var usuarios = contexto.AspNetUsers.Where(x => x.IdEstado == 1); //activo
-            List<Usuario> resultado = new List<Usuario>();
+            List<AspNetUsers> resultado = new List<AspNetUsers>();
             foreach (var item in usuarios.ToList())
             {
-                resultado.Add(new Usuario()
+                resultado.Add(new AspNetUsers()
                 {
                     Id = item.Id,
                     Email = item.Email,
@@ -39,5 +41,30 @@ namespace Servicios
 
             return resultado;
         }
+
+        //public string CrearUsuario(Usuario model)
+        //{
+        //    BDResennasJuegosEntities contexto = new BDResennasJuegosEntities();
+
+        //    AspNetUsers NuevoUsuario = new AspNetUsers();
+        //    NuevoUsuario.Email = model.Email;
+        //    NuevoUsuario.EmailConfirmed = false;
+        //    NuevoUsuario.PhoneNumber = model.PhoneNumber;
+        //    NuevoUsuario.PhoneNumberConfirmed = false;
+        //    NuevoUsuario.TwoFactorEnabled = false;
+        //    NuevoUsuario.LockoutEnabled = true;
+        //    NuevoUsuario.AccessFailedCount = 0;
+        //    NuevoUsuario.UserName = model.UserName;
+        //    NuevoUsuario.PuntajeTotal = 0;
+        //    NuevoUsuario.Avatar = model.Avatar;
+        //    NuevoUsuario.IdEstado = 1;  //Estado: Activo
+
+        //    contexto.AspNetUsers.Add(NuevoUsuario);
+        //    contexto.SaveChanges();
+
+        //    string idGenerado = NuevoUsuario.Id;
+
+        //    return idGenerado;
+        //}
     }
 }

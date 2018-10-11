@@ -1,13 +1,12 @@
-﻿@model Datos.AspNetUsers
+﻿@model SitioWeb_Juegos.Models.ApplicationUser
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Estás seguro que deseas eliminar este usuario?</h3>
 <div>
     <h4>AspNetUsers</h4>
     <hr />
@@ -122,8 +121,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a la grilla", "Index")
         </div>
     }
 </div>

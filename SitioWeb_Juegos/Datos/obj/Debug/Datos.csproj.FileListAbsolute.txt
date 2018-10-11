@@ -20,7 +20,6 @@ C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\EntityFramework.SqlServer.xml
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\es\EntityFramework.resources.dll
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\es\EntityFramework.SqlServer.resources.dll
-C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csproj.CopyComplete
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.dll
