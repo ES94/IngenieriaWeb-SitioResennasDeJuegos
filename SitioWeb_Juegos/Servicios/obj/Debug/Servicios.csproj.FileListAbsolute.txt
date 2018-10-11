@@ -32,3 +32,20 @@ C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\obj\Debug\Servicios.csproj.CopyComplete
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\obj\Debug\Servicios.dll
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\obj\Debug\Servicios.pdb
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\Servicios.dll.config
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\Servicios.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\Servicios.pdb
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\Datos.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\EntityFramework.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\Datos.pdb
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\Datos.dll.config
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\EntityFramework.xml
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\obj\Debug\Servicios.csprojAssemblyReference.cache
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\obj\Debug\Servicios.csproj.CoreCompileInputs.cache
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\obj\Debug\Servicios.csproj.CopyComplete
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\obj\Debug\Servicios.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Servicios\obj\Debug\Servicios.pdb

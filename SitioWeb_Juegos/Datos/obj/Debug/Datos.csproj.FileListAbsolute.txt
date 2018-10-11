@@ -24,3 +24,17 @@ C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csproj.CopyComplete
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.dll
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.pdb
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\Datos.dll.config
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\Datos.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\Datos.pdb
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\EntityFramework.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\EntityFramework.xml
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\es\EntityFramework.resources.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\bin\Debug\es\EntityFramework.SqlServer.resources.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.dll
+C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.pdb
