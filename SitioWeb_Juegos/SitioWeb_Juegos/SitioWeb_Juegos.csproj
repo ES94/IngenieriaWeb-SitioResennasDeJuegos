@@ -206,6 +206,7 @@
     <Compile Include="Controllers\AdminTagsController.cs" />
     <Compile Include="Controllers\AdminUsuariosController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
+    <Compile Include="Controllers\ComentariosController.cs" />
     <Compile Include="Controllers\DenunciasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1753,6 +1754,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\ImagenJuegos\" />
+    <Folder Include="Imagenes\ImagenUsuario\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\Top\" />
   </ItemGroup>

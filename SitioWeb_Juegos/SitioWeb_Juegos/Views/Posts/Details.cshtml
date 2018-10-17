@@ -85,7 +85,7 @@
 
                             @if (User.Identity.Name == item.AspNetUsers.UserName)
                             {
-                                <a class="btn btn-group" id="BtnEliminar" type="submit" href="@Url.Action("EliminarComentario","Posts",new { Id = item.Id })">Eliminar</a>
+                                <a class="btn btn-group" id="BtnEliminar" type="submit" href="@Url.Action("EliminarComentario","Comentarios",new { Id = item.Id })">Eliminar</a>
                             }
                             else
                             {
@@ -175,7 +175,7 @@
             if (comment.trim() != "") //Se puede ingresar espacios y el comentario se guarda igual, el .trim elimina el espacio en blanco y verifica si es vacio
             {
                 $.ajax({
-                    url: '/Posts/CrearComentario/',
+                    url: '/Comentarios/CrearComentario/',
                     data: { Comentario: comment, IdPost:@Model.Id},
                     type: 'POST',
                     dataType: 'json',
