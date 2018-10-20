@@ -39,7 +39,10 @@ namespace SitioWeb_Juegos
                         "~/Content/css/NavBar.css",
                         "~/Content/vendor/datatables/dataTables.bootstrap4.css",
                         "~/Content/css/sb-admin.css",
+                        //"~/Content/css/blog-home.css",
+                        "~/Content/css/MeGusta.css",
                         "~/Content/css/half-slider.css"));
+
 
 
 

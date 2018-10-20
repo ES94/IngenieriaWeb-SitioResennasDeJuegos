@@ -6,8 +6,130 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<body>
 
-<div class="container">
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Post Content Column -->
+            <div class="col-lg-8">
+                <!-- Title -->
+                <h1>@Model.Titulo</h1>
+                <!-- Author -->
+                <p class="lead">
+                    por
+                    <a href="#">@Model.AspNetUsers.UserName</a>  <!--ESTE HREF DEBE LLEVAR AL PERFIL DEL AUTOR-->
+                </p>
+                <hr>
+                <!-- Date/Time -->
+                Fecha de publicación: @Model.FechaPublicacion
+                <hr>
+                <!-- Preview Image -->
+                <img class="img-fluid rounded" src="@Model.Juegos.Imagen" alt="Imagen del juego">
+                <hr>
+                <!-- Post Content -->
+                <p>@Model.Contenido</p>
+
+                <hr />
+                <!--Contador de Me Gustas-->
+                <div class="qty mt-5">
+                    <span class="minus bg-dark">-</span>
+                    <input type="number" class="count" name="qty" value="1">
+                    <span class="plus bg-dark">+</span>
+                </div>
+                <hr />
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <!-- Comments Form -->
+                    <div class="card my-4">
+                        <h5 class="card-header">Deja un comentario:</h5>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <textarea id="Comentario" class="form-control" rows="3"></textarea>
+                                </div>
+                                <button type="submit" id="BtnComentar" class="btn btn-primary">Comentar</button>
+                            </form>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <h2>¡Debes estar logueado para comentar!</h2>
+                    @Html.ActionLink("Iniciar Sesion", "Login", "Account")
+                }
+
+                <!-- Single Comment -->
+                <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="#" alt=""> <!-- PONER FOTO DE PERFIL -->
+                    <div class="media-body">
+                        @foreach (var item in Model.Comentarios.ToList().Where(x => x.Estados.Descripcion == "Activo"))
+                        {
+                            <h5 class="mt-0">@item.AspNetUsers.UserName <small> el @item.FechaPublicacion</small></h5>
+                            @item.Contenido
+                            if (User.Identity.Name == item.AspNetUsers.UserName)
+                            {
+                                <a class="btn btn-group" id="BtnEliminar" type="submit" href="@Url.Action("EliminarComentario","Posts",new { Id = item.Id })">Eliminar</a>
+                            }
+                            else
+                            {
+                                <a class="btn btn-group" id="BtnDenunciar" type="submit" href="@Url.Action("Create","Denuncias",new { Id = item.Id })">Denunciar</a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_Widgets")
+        </div>
+    </div>
+
+    <!--Scripts del me gusta-->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.count').prop('disabled', true);
+            $(document).on('click', '.plus', function () {
+                $('.count').val(parseInt($('.count').val()) + 1);
+            });
+            $(document).on('click', '.minus', function () {
+                $('.count').val(parseInt($('.count').val()) - 1);
+                if ($('.count').val() == 0) {
+                    $('.count').val(1);
+                }
+            });
+        });
+    </script>
+
+    <!-- Hace la magia para comentar y ver el comentario creado -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $("#BtnComentar").click(function () {
+            var comment = $("#Comentario").val();
+            if (comment.trim() != "") //Se puede ingresar espacios y el comentario se guarda igual, el .trim elimina el espacio en blanco y verifica si es vacio
+            {
+                $.ajax({
+                    url: '/Posts/CrearComentario/',
+                    data: { Comentario: comment, IdPost:@Model.Id},
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data) {
+                        alert("Gracias por Comentar!");
+                    }
+                })
+            }
+            else {
+                alert("Error! Comentario Vacio");
+            }
+
+        })
+    });
+    </script>
+</body>
+
+@*<div class="container">
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
@@ -164,30 +286,7 @@
             <!-- /well -->
         </div>
     </div>
-</div>
+</div>*@
 
-<!-- Hace la magia para comentar y ver el comentario creado -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script type="text/javascript">
-    $(function() {
-        $("#BtnComentar").click(function () {
-            var comment = $("#Comentario").val();
-            if (comment.trim() != "") //Se puede ingresar espacios y el comentario se guarda igual, el .trim elimina el espacio en blanco y verifica si es vacio
-            {
-                $.ajax({
-                    url: '/Posts/CrearComentario/',
-                    data: { Comentario: comment, IdPost:@Model.Id},
-                    type: 'POST',
-                    dataType: 'json',
-                    success: function (data) {
-                        alert("Gracias por Comentar!");
-                    }
-                })
-            }
-            else {
-                alert("Error! Comentario Vacio");
-            }
 
-        })
-    });
-</script>
+
