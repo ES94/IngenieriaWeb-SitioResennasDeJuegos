@@ -1756,6 +1756,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagenes\ImagenJuegos\" />
+    <Folder Include="Imagenes\ImagenUsuario\" />
     <Folder Include="Scripts\" />
     <Folder Include="Views\Top\" />
   </ItemGroup>

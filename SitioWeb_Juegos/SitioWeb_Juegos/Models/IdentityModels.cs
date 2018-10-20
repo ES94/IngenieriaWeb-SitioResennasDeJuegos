@@ -10,9 +10,9 @@ namespace SitioWeb_Juegos.Models
     // Para agregar datos de perfil del usuario, agregue más propiedades a su clase ApplicationUser. Visite https://go.microsoft.com/fwlink/?LinkID=317594 para obtener más información.
     public class ApplicationUser : IdentityUser
     {
-        public int PuntajeTotal { get; set; }
-        public string Avatar { get; set; }
-        public int IdEstado { get; set; }
+        //public int PuntajeTotal { get; set; }
+        //public string Avatar { get; set; }
+        //public int IdEstado { get; set; }
 
         public ApplicationUser()
         {

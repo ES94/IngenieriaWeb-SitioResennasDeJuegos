@@ -42,9 +42,9 @@ namespace SitioWeb_Juegos.Controllers
                 user.Email = model.Email;
                 user.PhoneNumber = model.PhoneNumber;
                 user.UserName = model.UserName;
-                user.PuntajeTotal = 0;
-                user.IdEstado = 1;
-                user.Avatar = model.Avatar;
+                //user.PuntajeTotal = 0;
+                //user.IdEstado = 1;
+                //user.Avatar = model.Avatar;
 
                 var resultado = userManager.Create(user, "Password");
                 if (resultado.Succeeded)
