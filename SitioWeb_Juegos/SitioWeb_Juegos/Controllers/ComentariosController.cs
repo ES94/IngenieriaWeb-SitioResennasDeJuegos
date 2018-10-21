@@ -29,14 +29,26 @@ namespace SitioWeb_Juegos.Controllers
             return Json(false, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult EliminarComentario(int Id)
+        public JsonResult EliminarComentario(int IdComentario, int IdPost)
         {
             ConsultasComentarios consultascomentarios = new ConsultasComentarios();
-            Comentario model = new Comentario();
-            model.Id = Id;
-            var idpost = consultascomentarios.ModificarComentario(model, true);
 
-            return RedirectToAction("Details", "Posts", new { id = idpost });
+            Comentario model = new Comentario();
+            model.Id = IdComentario;
+            model.Post = IdPost;
+            var idgenerado = consultascomentarios.ModificarComentario(model,true);
+            return Json(false, JsonRequestBehavior.AllowGet);
         }
+
+
+        //public ActionResult EliminarComentario(int Id)
+        //{
+        //    ConsultasComentarios consultascomentarios = new ConsultasComentarios();
+        //    Comentario model = new Comentario();
+        //    model.Id = Id;
+        //    var idpost = consultascomentarios.ModificarComentario(model, true);
+
+        //    return RedirectToAction("Details", "Posts", new { id = idpost });
+        //}
     }
 }

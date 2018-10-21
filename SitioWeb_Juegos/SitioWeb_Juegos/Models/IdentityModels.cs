@@ -14,12 +14,12 @@ namespace SitioWeb_Juegos.Models
         //public string Avatar { get; set; }
         //public int IdEstado { get; set; }
 
-        public ApplicationUser()
-        {
-            IdEstado = 1;
-            PuntajeTotal = 0;
-            Avatar = "";
-        }
+        //public ApplicationUser()
+        //{
+        //    IdEstado = 1;
+        //    PuntajeTotal = 0;
+        //    Avatar = "";
+        //}
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

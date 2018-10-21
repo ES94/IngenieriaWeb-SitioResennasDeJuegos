@@ -84,13 +84,15 @@
                     <div class="card mb-4">
                         <img class="card-img-top" src="@Po.Juegos.Imagen" alt="Card image cap">
                         <div class="card-body">
-                            <h2 class="card-title">@Po.Titulo</h2>
+                            <h2 class="card-title">@Po.Titulo </h2>
                             <p class="card-text">@Po.Descripcion</p>
                             <a href="@Url.Action("Details", "Posts", new { id = Po.Id })" class="btn btn-primary">Leer más &rarr;</a>
+
                         </div>
                         <div class="card-footer text-muted">
-                           Fecha publicación: @Po.FechaPublicacion por:                        
+                            Fecha publicación: @Po.FechaPublicacion por:
                             <a href="#">@Po.AspNetUsers.UserName</a>
+                            <h4>Puntos:@Po.Puntaje</h4>
                         </div>
                     </div>
                 }

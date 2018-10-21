@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Servicios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,13 +7,15 @@ using System.Web.Mvc;
 
 namespace SitioWeb_Juegos.Controllers
 {
+   
     public class TopController : Controller
     {
+        private ConsultasUsuarios consultasUsuarios = new ConsultasUsuarios();
         // GET: Top
-        public ActionResult Index()
+        public ActionResult _UsuariosTops()
         {
-            //listar posts con mas puntajes, mostrar titulo y puntaje
-            return View();
+            var model = consultasUsuarios.ObtenerUsuarios();
+            return PartialView("_UsuariosTops",model);
         }
 
         // GET: Top/Details/5

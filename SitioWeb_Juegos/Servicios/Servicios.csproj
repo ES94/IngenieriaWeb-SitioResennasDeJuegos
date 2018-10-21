@@ -56,9 +56,11 @@
     <Compile Include="ConsultasDenuncias.cs" />
     <Compile Include="ConsultasPosts.cs" />
     <Compile Include="ConsultasUsuarios.cs" />
+    <Compile Include="PostDenunciado.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Voto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -31,5 +31,25 @@ namespace Servicios
             var idgenerado = nuevopost.Id;
             return (idgenerado);
         }
+
+        public int VotarPost(Voto model)
+        {
+            BDResennasJuegosEntities db = new BDResennasJuegosEntities();
+            var actpuntajepost = db.Posts.Where(x => x.Id == model.IdPost).FirstOrDefault();
+            actpuntajepost.Puntaje += model.Cantidad;
+            db.SaveChanges();
+            var actpuntajeAutor = db.AspNetUsers.Where(x => x.Id == actpuntajepost.Autor).FirstOrDefault();
+            actpuntajeAutor.PuntajeTotal += model.Cantidad;
+            db.SaveChanges();
+            Votos nuevovoto = new Votos();
+            nuevovoto.Usuario = model.Usuario;
+            nuevovoto.IdPost = model.IdPost;
+            nuevovoto.Fecha = DateTime.Now;
+            nuevovoto.Cantidad = model.Cantidad;
+            db.Votos.Add(nuevovoto);           
+            db.SaveChanges();
+            var idgenerado = nuevovoto.Id;
+            return (idgenerado);
+        }
     }
 }

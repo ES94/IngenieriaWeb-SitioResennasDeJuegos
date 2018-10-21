@@ -18,6 +18,7 @@ namespace Datos
         public Nullable<int> IdPost { get; set; }
         public string Usuario { get; set; }
         public Nullable<System.DateTime> Fecha { get; set; }
+        public int Cantidad { get; set; }
     
         public virtual AspNetUsers AspNetUsers { get; set; }
         public virtual Posts Posts { get; set; }

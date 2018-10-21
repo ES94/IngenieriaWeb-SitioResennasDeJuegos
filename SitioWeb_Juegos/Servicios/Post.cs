@@ -10,7 +10,7 @@ namespace Servicios
         public int Id { get; set; }
         public string Titulo { get; set; }
         public string Contenido { get; set; }
-        public System.DateTime FechaPublicacion { get; set; }
+        public DateTime FechaPublicacion { get; set; }
         public int IdCategoria { get; set; }
         public string Autor { get; set; }
         public int Puntaje { get; set; }

@@ -28,7 +28,7 @@ namespace Servicios
 
         public int ModificarComentario(Comentario model, bool eliminar)
         {
-            Comentarios comentarioActual = db.Comentarios.Where(x => x.Id == model.Id).SingleOrDefault();
+            Comentarios comentarioActual = db.Comentarios.Where(x => x.Id == model.Id && x.Post == model.Post).SingleOrDefault();
 
             if (comentarioActual != null)
             {

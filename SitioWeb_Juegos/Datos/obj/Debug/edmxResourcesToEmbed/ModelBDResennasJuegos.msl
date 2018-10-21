@@ -185,6 +185,7 @@
     <EntitySetMapping Name="Votos">
       <EntityTypeMapping TypeName="BDResennasJuegosModel.Votos">
         <MappingFragment StoreEntitySet="Votos">
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdPost" ColumnName="IdPost" />
           <ScalarProperty Name="Usuario" ColumnName="Usuario" />

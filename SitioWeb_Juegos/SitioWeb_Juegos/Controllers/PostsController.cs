@@ -43,7 +43,6 @@ namespace SitioWeb_Juegos.Controllers
         public ActionResult Create()
         {
             ViewBag.Autor = new SelectList(db.AspNetUsers, "Id", "Email");
-            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Categoria");
             ViewBag.IdEstado = new SelectList(db.Estados, "Id", "Descripcion");
             ViewBag.IdJuego = new SelectList(db.Juegos, "Id", "Descripcion");
             return View();
@@ -136,7 +135,18 @@ namespace SitioWeb_Juegos.Controllers
             return RedirectToAction("Index");
         }
 
-        
+        public JsonResult VotarPost(int voto, int IdPost)
+        {
+            ConsultasPosts consultaspost = new ConsultasPosts();
+            var IdAutor = User.Identity.GetUserId();
+
+            Voto model = new Voto();
+            model.Usuario = IdAutor;
+            model.Cantidad = voto;
+            model.IdPost = IdPost;
+            var idgenerado = consultaspost.VotarPost(model);
+            return Json(false, JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult Denunciar()
         {

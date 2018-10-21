@@ -60,7 +60,7 @@
     <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-    <Property Name="PuntajeTotal" Type="int" />
+    <Property Name="PuntajeTotal" Type="int" Nullable="false" />
     <Property Name="Avatar" Type="nvarchar" MaxLength="500" />
     <Property Name="Baneado" Type="bit" />
     <Property Name="IdEstado" Type="int" />
@@ -153,7 +153,7 @@
     <Property Name="Contenido" Type="nvarchar(max)" Nullable="false" />
     <Property Name="FechaPublicacion" Type="datetime" Nullable="false" />
     <Property Name="Autor" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="Puntaje" Type="int" />
+    <Property Name="Puntaje" Type="int" Nullable="false" />
     <Property Name="IdEstado" Type="int" Nullable="false" />
     <Property Name="Eliminado" Type="bit" />
     <Property Name="Descripcion" Type="nvarchar" MaxLength="375" />
@@ -192,6 +192,7 @@
     <Property Name="IdPost" Type="int" />
     <Property Name="Usuario" Type="nvarchar" MaxLength="128" />
     <Property Name="Fecha" Type="datetime" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_AspNetUsers_Estados">
     <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />

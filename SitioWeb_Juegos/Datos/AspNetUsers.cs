@@ -39,7 +39,7 @@ namespace Datos
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
-        public Nullable<int> PuntajeTotal { get; set; }
+        public int PuntajeTotal { get; set; }
         public string Avatar { get; set; }
         public Nullable<bool> Baneado { get; set; }
         public Nullable<int> IdEstado { get; set; }

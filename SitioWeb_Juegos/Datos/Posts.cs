@@ -28,7 +28,7 @@ namespace Datos
         public string Contenido { get; set; }
         public System.DateTime FechaPublicacion { get; set; }
         public string Autor { get; set; }
-        public Nullable<int> Puntaje { get; set; }
+        public int Puntaje { get; set; }
         public int IdEstado { get; set; }
         public Nullable<bool> Eliminado { get; set; }
         public string Descripcion { get; set; }

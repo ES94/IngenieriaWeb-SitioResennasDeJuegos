@@ -39,3 +39,4 @@ C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Jue
 C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.dll
 C:\Users\Julio y Gladys\Desktop\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.pdb
 C:\Resennas_Juegos\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\Usuario\Documents\GitHub\IngenieriaWeb-SitioResennasDeJuegos\SitioWeb_Juegos\Datos\obj\Debug\Datos.csprojAssemblyReference.cache

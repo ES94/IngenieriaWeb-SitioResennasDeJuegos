@@ -16,33 +16,10 @@ namespace SitioWeb_Juegos.Controllers
     {
         private BDResennasJuegosEntities db = new BDResennasJuegosEntities();
 
-        // GET: Denuncias
-        public ActionResult Index()
-        {
-            var comentariosDenunciados = db.ComentariosDenunciados.Include(c => c.AspNetUsers).Include(c => c.Comentarios).Include(c => c.MotivosDenuncia);
-            return View(comentariosDenunciados.ToList());
-        }
-
-        // GET: Denuncias/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ComentariosDenunciados comentariosDenunciados = db.ComentariosDenunciados.Find(id);
-            if (comentariosDenunciados == null)
-            {
-                return HttpNotFound();
-            }
-            return View(comentariosDenunciados);
-        }
-
         // GET: Denuncias/Create
         public ActionResult Create()
         {
             ViewBag.Motivo = new SelectList(db.MotivosDenuncia, "Id", "Descripcion");
-            ViewBag.IdComentario = new SelectList(db.Comentarios, "Id", "Titulo");
             return View();
         }
 

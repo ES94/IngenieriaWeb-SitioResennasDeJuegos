@@ -1,5 +1,5 @@
 ﻿@model Datos.Posts
-
+@using Microsoft.AspNet.Identity;
 
 @{
     ViewBag.Title = "Details";
@@ -22,25 +22,34 @@
                 </p>
                 <hr>
                 <!-- Date/Time -->
-                Fecha de publicación: @Model.FechaPublicacion
+                Fecha de publicación: @Model.FechaPublicacion.ToLongDateString()
                 <hr>
                 <!-- Preview Image -->
                 <img class="img-fluid rounded" src="@Model.Juegos.Imagen" alt="Imagen del juego">
                 <hr>
                 <!-- Post Content -->
                 <p>@Model.Contenido</p>
+                <hr />
+                <!-- Post Puntajes -->
+                <h4>Puntos:@Model.Puntaje</h4>
 
                 <hr />
-                <!--Contador de Me Gustas-->
-                <div class="qty mt-5">
-                    <span class="minus bg-dark">-</span>
-                    <input type="number" class="count" name="qty" value="1">
-                    <span class="plus bg-dark">+</span>
-                </div>
-                <hr />
-
                 @if (User.Identity.IsAuthenticated)
                 {
+                    if ((User.Identity.GetUserId() != Model.Autor) && (Model.Votos.Where(x => x.Usuario == User.Identity.GetUserId() && x.IdPost == Model.Id).ToList().Count == 0))
+                    {
+                        <!--Contador de Me Gustas-->
+                        <div class="qty mt-5">
+                            <span class="minus bg-dark">-</span>
+                            <input type="number" class="count" id="qty" value="0">
+                            <span class="plus bg-dark">+</span>
+
+                            <button type="submit" id="BtnVotar" class="btn btn-primary">Votar</button>
+                        </div>
+
+                    }
+
+                    <hr />
                     <!-- Comments Form -->
                     <div class="card my-4">
                         <h5 class="card-header">Deja un comentario:</h5>
@@ -70,223 +79,283 @@
                             @item.Contenido
                             if (User.Identity.Name == item.AspNetUsers.UserName)
                             {
-                                <a class="btn btn-group" id="BtnEliminar" type="submit" href="@Url.Action("EliminarComentario","Posts",new { Id = item.Id })">Eliminar</a>
+
+                                <button type="submit" id="btnEliminarComentario" data-id="@item.Id" class="btn btn-primary">Eliminar</button>
                             }
                             else
                             {
-                                <a class="btn btn-group" id="BtnDenunciar" type="submit" href="@Url.Action("Create","Denuncias",new { Id = item.Id })">Denunciar</a>
+                                <a class="btn border-success" id="BtnDenunciar" type="submit" href="@Url.Action("Create","Denuncias",new { Id = item.Id })">Denunciar</a>
                             }
                         }
                     </div>
                 </div>
             </div>
-            @Html.Partial("_Widgets")
-        </div>
+                @Html.Partial("_Widgets")
+            </div>
     </div>
 
     <!--Scripts del me gusta-->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.count').prop('disabled', true);
             $(document).on('click', '.plus', function () {
                 $('.count').val(parseInt($('.count').val()) + 1);
+                if ($('.count').val() > 5) {
+                    $('.count').val(5);
+                }
             });
             $(document).on('click', '.minus', function () {
                 $('.count').val(parseInt($('.count').val()) - 1);
-                if ($('.count').val() == 0) {
-                    $('.count').val(1);
+                if ($('.count').val() < -5) {
+                    $('.count').val(-5);
                 }
             });
         });
     </script>
 
-    <!-- Hace la magia para comentar y ver el comentario creado -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script type="text/javascript">
     $(function() {
+        $("#BtnVotar").click(function () {
+            var voto = $("#qty").val();
+            if (voto != 0)
+            {
+                $.ajax({
+                    url: '/Posts/VotarPost/',
+                    data: { Voto: voto, IdPost:@Model.Id},
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data) {
+
+                        alert("Gracias por Votar!");
+                    }
+                })
+                setTimeout(function () {
+                    document.getElementById("BtnVotar").disabled = true;
+                    document.getElementById("BtnVotar").innerHTML = "Ya votaste!";
+                }, 999999999999999999);
+            }
+            else {
+                alert("Error! El voto no puede ser 0!");
+            }
+        })
+    });
+    </script>
+
+    <!--Hace la magia para comentar y ver el comentario creado-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
         $("#BtnComentar").click(function () {
             var comment = $("#Comentario").val();
             if (comment.trim() != "") //Se puede ingresar espacios y el comentario se guarda igual, el .trim elimina el espacio en blanco y verifica si es vacio
             {
                 $.ajax({
-                    url: '/Posts/CrearComentario/',
+                    url: '/Comentarios/CrearComentario/',
                     data: { Comentario: comment, IdPost:@Model.Id},
                     type: 'POST',
                     dataType: 'json',
                     success: function (data) {
                         alert("Gracias por Comentar!");
                     }
-                })
+                });
             }
             else {
                 alert("Error! Comentario Vacio");
             }
 
+        });
+    })
+    </script>
+
+    <!--Hace la magia para borrar comentario creado-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("button[id=btnEliminarComentario]").click(function () {
+
+                if (confirm('Eliminar comentario?')) //Se puede ingresar espacios y el comentario se guarda igual, el .trim elimina el espacio en blanco y verifica si es vacio
+                {
+                    $.ajax({
+                        url: '/Comentarios/EliminarComentario/',
+                        data: { IdComentario: $(this).data("id"), IdPost:@Model.Id},
+                        type: 'POST',
+                        dataType: 'json',
+                        success: function (data) {
+                            alert("Gracias por Comentar!");
+                        }
+                    });
+                }
+                else {
+                    alert("Error! Comentario Vacio");
+                }
+
+            });
         })
-    });
     </script>
 </body>
 
 @*<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                @Model.Titulo
-            </h1>
-            <ol class="breadcrumb">
-                <li>
-                    @Html.ActionLink("Home", "Index", "Posts")
-                </li>
-                <li class="active">Blog Post</li>
-            </ol>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    @Model.Titulo
+                </h1>
+                <ol class="breadcrumb">
+                    <li>
+                        @Html.ActionLink("Home", "Index", "Posts")
+                    </li>
+                    <li class="active">Blog Post</li>
+                </ol>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-8">
-            <!-- the actual blog post: title/author/date/content -->
-            <hr>
-            <p>
-                <i class="fa fa-clock-o">@Model.FechaPublicacion</i> Autor @Model.AspNetUsers.UserName
-            </p>
-            <hr>
-            <img class="img-responsive" src="@Model.Juegos.Imagen">
-            <hr>
-            <p>@Model.Contenido</p>
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- the actual blog post: title/author/date/content -->
+                <hr>
+                <p>
+                    <i class="fa fa-clock-o">@Model.FechaPublicacion</i> Autor @Model.AspNetUsers.UserName
+                </p>
+                <hr>
+                <img class="img-responsive" src="@Model.Juegos.Imagen">
+                <hr>
+                <p>@Model.Contenido</p>
 
 
-            <strong>Tags:</strong>
+                <strong>Tags:</strong>
 
-            <ul>
-                <li>
-                    <a href="http://spaceipsum.com/">Space Ipsum</a>
-                </li>
-                <li>
-                    <a href="http://cupcakeipsum.com/">Cupcake Ipsum</a>
-                </li>
-                <li>
-                    <a href="http://tunaipsum.com/">Tuna Ipsum</a>
-                </li>
-            </ul>
-            <hr>
-            @if (User.Identity.IsAuthenticated)
-            {
+                <ul>
+                    <li>
+                        <a href="http://spaceipsum.com/">Space Ipsum</a>
+                    </li>
+                    <li>
+                        <a href="http://cupcakeipsum.com/">Cupcake Ipsum</a>
+                    </li>
+                    <li>
+                        <a href="http://tunaipsum.com/">Tuna Ipsum</a>
+                    </li>
+                </ul>
+                <hr>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="well">
+                        <h4>Comentarios:</h4>
+                        <form role="form">
+                            <div class="form-group">
+                                <textarea id="Comentario" typeof="text" rows="3" class="form-control"></textarea>
+                            </div>
+                            <button class="btn btn-primary" id="BtnComentar" type="submit">Comentar</button>
+                        </form>
+                    </div>
+                }
+                else
+                {
+                    <h2>Tiene que estar logeado para comentar</h2>
+                    @Html.ActionLink("Iniciar Sesion", "Login", "Account")
+                }
+
+
+                <!-- Lista todos los comentarios -->
+                    <div class="media">
+                        @foreach (var item in Model.Comentarios.ToList().Where(x => x.Estados.Descripcion == "Activo"))
+                        {
+                            <a class="pull-left">
+                                @item.AspNetUsers.UserName
+                            </a>
+                            <div class="media-body">
+
+                                <h4 class="media-heading">
+                                    <small>
+                                        @item.FechaPublicacion
+                                    </small>
+                                </h4>
+                                @item.Contenido
+
+                                @if (User.Identity.Name == item.AspNetUsers.UserName)
+                                {
+                                    <a class="btn btn-group" id="BtnEliminar" type="submit" href="@Url.Action("EliminarComentario","Posts",new { Id = item.Id })">Eliminar</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-group" id="BtnDenunciar" type="submit" href="@Url.Action("Create","Denuncias",new { Id = item.Id })">Denunciar</a>
+                                }
+                            </div>
+
+
+                        }
+
+
+                    </div>
+
+                <hr>
+
+
+                <!-- the comments -->
+
+            </div>
+            <div class="col-lg-4">
                 <div class="well">
-                    <h4>Comentarios:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea id="Comentario" typeof="text" rows="3" class="form-control"></textarea>
-                        </div>
-                        <button class="btn btn-primary" id="BtnComentar" type="submit">Comentar</button>
-                    </form>
-                </div>
-            }
-            else
-            {
-                <h2>Tiene que estar logeado para comentar</h2>
-                @Html.ActionLink("Iniciar Sesion", "Login", "Account")
-            }
-
-
-            <!-- Lista todos los comentarios -->
-                <div class="media">
-                    @foreach (var item in Model.Comentarios.ToList().Where(x => x.Estados.Descripcion == "Activo"))
-                    {
-                        <a class="pull-left">
-                            @item.AspNetUsers.UserName
-                        </a>
-                        <div class="media-body">
-
-                            <h4 class="media-heading">
-                                <small>
-                                    @item.FechaPublicacion
-                                </small>
-                            </h4>
-                            @item.Contenido  
-
-                            @if (User.Identity.Name == item.AspNetUsers.UserName)
-                            {
-                                <a class="btn btn-group" id="BtnEliminar" type="submit" href="@Url.Action("EliminarComentario","Posts",new { Id = item.Id })">Eliminar</a>
-                            }
-                            else
-                            {
-                                <a class="btn btn-group" id="BtnDenunciar" type="submit" href="@Url.Action("Create","Denuncias",new { Id = item.Id })">Denunciar</a>
-                            }
-                        </div>
-
-
-                    }
-
-
-                </div>
-
-            <hr>
-
-
-            <!-- the comments -->
-
-        </div>
-        <div class="col-lg-4">
-            <div class="well">
-                <h4>Blog Search</h4>
-                <div class="input-group">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </span>
-                </div>
-                <!-- /input-group -->
-            </div>
-            <!-- /well -->
-            <div class="well">
-                <h4>Popular Blog Categories</h4>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="#dinosaurs">Dinosaurs</a>
-                            </li>
-                            <li>
-                                <a href="#spaceships">Spaceships</a>
-                            </li>
-                            <li>
-                                <a href="#fried-foods">Fried Foods</a>
-                            </li>
-                            <li>
-                                <a href="#wild-animals">Wild Animals</a>
-                            </li>
-                        </ul>
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
                     </div>
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="#alien-abductions">Alien Abductions</a>
-                            </li>
-                            <li>
-                                <a href="#business-casual">Business Casual</a>
-                            </li>
-                            <li>
-                                <a href="#robots">Robots</a>
-                            </li>
-                            <li>
-                                <a href="#fireworks">Fireworks</a>
-                            </li>
-                        </ul>
+                    <!-- /input-group -->
+                </div>
+                <!-- /well -->
+                <div class="well">
+                    <h4>Popular Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#dinosaurs">Dinosaurs</a>
+                                </li>
+                                <li>
+                                    <a href="#spaceships">Spaceships</a>
+                                </li>
+                                <li>
+                                    <a href="#fried-foods">Fried Foods</a>
+                                </li>
+                                <li>
+                                    <a href="#wild-animals">Wild Animals</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="#alien-abductions">Alien Abductions</a>
+                                </li>
+                                <li>
+                                    <a href="#business-casual">Business Casual</a>
+                                </li>
+                                <li>
+                                    <a href="#robots">Robots</a>
+                                </li>
+                                <li>
+                                    <a href="#fireworks">Fireworks</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <!-- /well -->
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Bootstrap's default well's work great for side widgets! What is a widget anyways...?</p>
+                </div>
+                <!-- /well -->
             </div>
-            <!-- /well -->
-            <div class="well">
-                <h4>Side Widget Well</h4>
-                <p>Bootstrap's default well's work great for side widgets! What is a widget anyways...?</p>
-            </div>
-            <!-- /well -->
         </div>
-    </div>
-</div>*@
+    </div>*@
 
 
 

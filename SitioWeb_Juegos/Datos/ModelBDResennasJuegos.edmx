@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BDResennasJuegosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BDResennasJuegosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -65,7 +65,7 @@
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="PuntajeTotal" Type="int" />
+          <Property Name="PuntajeTotal" Type="int" Nullable="false" />
           <Property Name="Avatar" Type="nvarchar" MaxLength="500" />
           <Property Name="Baneado" Type="bit" />
           <Property Name="IdEstado" Type="int" />
@@ -158,7 +158,7 @@
           <Property Name="Contenido" Type="nvarchar(max)" Nullable="false" />
           <Property Name="FechaPublicacion" Type="datetime" Nullable="false" />
           <Property Name="Autor" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="Puntaje" Type="int" />
+          <Property Name="Puntaje" Type="int" Nullable="false" />
           <Property Name="IdEstado" Type="int" Nullable="false" />
           <Property Name="Eliminado" Type="bit" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="375" />
@@ -197,6 +197,7 @@
           <Property Name="IdPost" Type="int" />
           <Property Name="Usuario" Type="nvarchar" MaxLength="128" />
           <Property Name="Fecha" Type="datetime" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_AspNetUsers_Estados">
           <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
@@ -579,8 +580,7 @@
             <End Role="Votos" EntitySet="Votos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDResennasJuegosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -639,7 +639,7 @@
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PuntajeTotal" Type="Int32" />
+          <Property Name="PuntajeTotal" Type="Int32" Nullable="false" />
           <Property Name="Avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Baneado" Type="Boolean" />
           <Property Name="IdEstado" Type="Int32" />
@@ -759,7 +759,7 @@
           <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FechaPublicacion" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Autor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Puntaje" Type="Int32" />
+          <Property Name="Puntaje" Type="Int32" Nullable="false" />
           <Property Name="IdEstado" Type="Int32" Nullable="false" />
           <Property Name="Eliminado" Type="Boolean" />
           <Property Name="Descripcion" Type="String" MaxLength="375" FixedLength="false" Unicode="true" />
@@ -800,6 +800,7 @@
           <Property Name="Fecha" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Votos_AspNetUsers" FromRole="Votos" ToRole="AspNetUsers" />
           <NavigationProperty Name="Posts" Relationship="Self.FK_Votos_Post" FromRole="Votos" ToRole="Posts" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -1318,6 +1319,7 @@
           <EntitySetMapping Name="Votos">
             <EntityTypeMapping TypeName="BDResennasJuegosModel.Votos">
               <MappingFragment StoreEntitySet="Votos">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdPost" ColumnName="IdPost" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />

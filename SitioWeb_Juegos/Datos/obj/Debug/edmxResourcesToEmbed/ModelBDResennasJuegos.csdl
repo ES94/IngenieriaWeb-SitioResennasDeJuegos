@@ -55,7 +55,7 @@
     <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
     <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
     <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="PuntajeTotal" Type="Int32" />
+    <Property Name="PuntajeTotal" Type="Int32" Nullable="false" />
     <Property Name="Avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Baneado" Type="Boolean" />
     <Property Name="IdEstado" Type="Int32" />
@@ -175,7 +175,7 @@
     <Property Name="Contenido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="FechaPublicacion" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Autor" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Puntaje" Type="Int32" />
+    <Property Name="Puntaje" Type="Int32" Nullable="false" />
     <Property Name="IdEstado" Type="Int32" Nullable="false" />
     <Property Name="Eliminado" Type="Boolean" />
     <Property Name="Descripcion" Type="String" MaxLength="375" FixedLength="false" Unicode="true" />
@@ -216,6 +216,7 @@
     <Property Name="Fecha" Type="DateTime" Precision="3" />
     <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_Votos_AspNetUsers" FromRole="Votos" ToRole="AspNetUsers" />
     <NavigationProperty Name="Posts" Relationship="Self.FK_Votos_Post" FromRole="Votos" ToRole="Posts" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
