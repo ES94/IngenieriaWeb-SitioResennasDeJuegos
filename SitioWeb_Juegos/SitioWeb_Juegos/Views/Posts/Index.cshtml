@@ -5,68 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                Blog Home 2
-                <small>Blog Homepage</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li>
-                    @Html.ActionLink("Home", "Index", "Home")
-                </li>
-                <li class="active">Blog Home 2</li>
-            </ol>
-        </div>
-    </div>
-    @foreach (var Po in Model.OrderByDescending(x => x.FechaPublicacion))
-    {
-        <div class="row">
-            <div class="col-md-1">
-                <p>
-                    <i class="fa fa-file-text fa-4x"></i>
-                </p>
-                <p>@Po.FechaPublicacion</p>
-            </div>
-            <div class="col-md-5">
-                <a href="@Url.Action("Post")">
-
-                    <img class="img-responsive" src="@Po.Juegos.Imagen">
-
-                </a>
-            </div>
-            <div class="col-md-6">
-                <h3>
-                    <a href="@Url.Action("Details", "Posts", new { id = Po.Id })">@Po.Titulo</a>
-                </h3>
-                <p>
-                    Autor <a href="#">@Po.AspNetUsers.UserName</a>
-                </p>
-
-                <p>@Po.Descripcion</p>
-
-                <a href="@Url.Action("Details", "Posts", new { id = Po.Id })" class="btn btn-primary">Leer mas<i class="fa fa-angle-right"></i></a>
-            </div>
-        </div>
-        <hr>
-    }
-
-
-    <hr>
-    <div class="row">
-        <ul class="pager">
-            <li class="previous">
-                <a href="#">← Older</a>
-            </li>
-            <li class="next">
-                <a href="#">Newer →</a>
-            </li>
-        </ul>
-    </div>
-</div>*@
-
-
 <body>
 
     <!-- Page Content -->
@@ -80,11 +18,11 @@
                 </h1>
                 <!-- Blog Post -->
                 @foreach (var Po in Model.OrderByDescending(x => x.FechaPublicacion))
-                { 
+                {
                     <div class="card mb-4">
                         <img class="card-img-top" src="@Po.Juegos.Imagen" alt="Card image cap">
                         <div class="card-body">
-                            <h2 class="card-title">@Po.Titulo </h2>
+                            <h2 class="card-title">@Po.Juegos.Descripcion </h2>
                             <p class="card-text">@Po.Descripcion</p>
                             <a href="@Url.Action("Details", "Posts", new { id = Po.Id })" class="btn btn-primary">Leer más &rarr;</a>
 
@@ -106,7 +44,8 @@
                     </li>
                 </ul>
             </div>
-          @Html.Partial("_Widgets")
+            @Html.Partial("_Widgets")
+            
         </div>
         <!-- /.row -->
     </div>

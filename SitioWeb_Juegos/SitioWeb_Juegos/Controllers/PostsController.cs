@@ -42,8 +42,6 @@ namespace SitioWeb_Juegos.Controllers
         // GET: Posts/Create
         public ActionResult Create()
         {
-            ViewBag.Autor = new SelectList(db.AspNetUsers, "Id", "Email");
-            ViewBag.IdEstado = new SelectList(db.Estados, "Id", "Descripcion");
             ViewBag.IdJuego = new SelectList(db.Juegos, "Id", "Descripcion");
             return View();
         }
@@ -64,9 +62,6 @@ namespace SitioWeb_Juegos.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.Autor = new SelectList(db.AspNetUsers, "Id", "Email", posts.Autor);
-            ViewBag.IdEstado = new SelectList(db.Estados, "Id", "Descripcion", posts.IdEstado);
             ViewBag.IdJuego = new SelectList(db.Juegos, "Id", "Descripcion", posts.IdJuego);
             
             return View(posts);
@@ -146,6 +141,13 @@ namespace SitioWeb_Juegos.Controllers
             model.IdPost = IdPost;
             var idgenerado = consultaspost.VotarPost(model);
             return Json(false, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Categorias(int id)
+        {
+            var model = db.Posts.Include(p => p.AspNetUsers).Include(p => p.Estados).Include(p => p.Juegos).Where(x => x.Estados.Descripcion == "Activo" && x.Juegos.Categorias.Id == id);
+
+            return View("Index", model.ToList());
         }
 
         public ActionResult Denunciar()

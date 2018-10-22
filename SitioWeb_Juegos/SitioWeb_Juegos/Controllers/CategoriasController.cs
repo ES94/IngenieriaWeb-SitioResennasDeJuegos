@@ -17,8 +17,19 @@ namespace SitioWeb_Juegos.Controllers
             var model = consultasCategorias.ObtenerCategorias();
             return View(model);
         }
-                     
-    
+
+        public ActionResult _PartialCategorias()
+        {
+            var model = consultasCategorias.ObtenerCategorias();
+            return PartialView("_PartialCategorias",model);
+        }
+
+        public ActionResult _NavigationCategorias()
+        {
+            var model = consultasCategorias.ObtenerCategorias();
+            return PartialView("_NavigationCategorias", model);
+        }
+
 
         // GET: Categorias/Details/5
         public ActionResult Details(int id)

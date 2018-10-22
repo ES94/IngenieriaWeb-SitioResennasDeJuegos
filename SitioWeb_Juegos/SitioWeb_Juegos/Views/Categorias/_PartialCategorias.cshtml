@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Servicios.Categoria>
+
+<div class="card my-4">
+    <h5 class="card-header">Categorias</h5>
+    <div class="card-body">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-6">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="@Url.Action("Categorias","Posts",new { id = item.Id})">@item.Descripcion</a>
+                        </li>
+                    </ul>
+                </div>
+            }
+                
+        </div>
+    </div>
+</div>

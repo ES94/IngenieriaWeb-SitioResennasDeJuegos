@@ -15,7 +15,7 @@ namespace SitioWeb_Juegos.Controllers
         public ActionResult _UsuariosTops()
         {
             var model = consultasUsuarios.ObtenerUsuarios();
-            return PartialView("_UsuariosTops",model);
+            return PartialView("_UsuariosTops", model);
         }
 
         // GET: Top/Details/5

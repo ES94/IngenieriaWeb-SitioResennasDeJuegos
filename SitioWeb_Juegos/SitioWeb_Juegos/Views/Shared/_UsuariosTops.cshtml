@@ -1,27 +1,17 @@
-﻿@model IEnumerable<Servicios.Usuario>
-    {}
-<div class="card my-4">
-    <h5 class="card-header">Tags</h5>
-    <div class="card-body">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-lg-6">
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#">@item.UserName</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#">@item.PuntajeTotal</a>
-                        </li>
-                    </ul>
-                </div>
-            }
+﻿@model IEnumerable<Datos.AspNetUsers>
 
-        </div>
-    </div>
+<div class="card my-4">
+     <h5 class="card-header">Ranking Usuarios</h5>
+     <div class="card-body"> 
+         <ol>
+             @foreach (var item in Model.OrderByDescending(x=> x.PuntajeTotal).Take(10))
+             {
+
+                 <li>
+                 <a href="@Url.Action("Categorias","Posts",new { id = item.Id})">@item.UserName : </a> @item.PuntajeTotal
+                </li>
+
+             }
+         </ol>
+      </div>
 </div>
