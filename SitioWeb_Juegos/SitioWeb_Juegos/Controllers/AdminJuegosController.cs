@@ -42,7 +42,7 @@ namespace SitioWeb_Juegos.Controllers
         // GET: AdminJuegos/Create
         public ActionResult Create()
         {
-            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Categoria");
+            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Descripcion");
             return View();
         }
 
@@ -72,7 +72,7 @@ namespace SitioWeb_Juegos.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Categoria", juegos.IdCategoria);
+            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Descripcion", juegos.IdCategoria);
             return View(juegos);
         }
 
@@ -88,7 +88,7 @@ namespace SitioWeb_Juegos.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Categoria", juegos.IdCategoria);
+            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Descripcion", juegos.IdCategoria);
             return View(juegos);
         }
 
@@ -133,7 +133,7 @@ namespace SitioWeb_Juegos.Controllers
             //    db.SaveChanges();
             //    return RedirectToAction("Index");
             //}
-            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Categoria", juegos.IdCategoria);
+            ViewBag.IdCategoria = new SelectList(db.Categorias, "Id", "Descripcion", juegos.IdCategoria);
             return View(juegos);
         }
 

@@ -207,7 +207,8 @@
     <Compile Include="Controllers\AdminUsuariosController.cs" />
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\ComentariosController.cs" />
-    <Compile Include="Controllers\DenunciasController.cs" />
+    <Compile Include="Controllers\DenunciasPostsController.cs" />
+    <Compile Include="Controllers\DenunciasComentariosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
@@ -1747,11 +1748,7 @@
     <Content Include="Views\AdminNoticias\Edit.cshtml" />
     <Content Include="Views\AdminNoticias\Index.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
-    <Content Include="Views\Denuncias\Create.cshtml" />
-    <Content Include="Views\Denuncias\Delete.cshtml" />
-    <Content Include="Views\Denuncias\Details.cshtml" />
-    <Content Include="Views\Denuncias\Edit.cshtml" />
-    <Content Include="Views\Denuncias\Index.cshtml" />
+    <Content Include="Views\DenunciasComentarios\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1860,6 +1857,8 @@
     <Content Include="Views\Shared\_UsuariosTops.cshtml" />
     <Content Include="Views\Categorias\_PartialCategorias.cshtml" />
     <Content Include="Views\Categorias\_NavigationCategorias.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\DenunciasPosts\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -31,11 +31,15 @@
                 <p>@Model.Contenido</p>
                 <hr />
                 <!-- Post Puntajes -->
-                <h4>Puntos:@Model.Puntaje</h4>
-
-                <hr />
+                <h4>Puntos:@Model.Puntaje</h4>        
                 @if (User.Identity.IsAuthenticated)
                 {
+                    if ((User.Identity.GetUserId() != Model.Autor) && (Model.PostDenunciados.Where(x => x.Usuario == User.Identity.GetUserId() && x.IdPost == Model.Id).ToList().Count == 0))
+                    {
+                        <a class="btn btn-danger" id="btnDenunciarComentario" type="submit" href="@Url.Action("Create","DenunciasPosts",new {IdPost = Model.Id })">Denunciar Post</a>
+                    }
+                    
+
                     if ((User.Identity.GetUserId() != Model.Autor) && (Model.Votos.Where(x => x.Usuario == User.Identity.GetUserId() && x.IdPost == Model.Id).ToList().Count == 0))
                     {
                         <!--Contador de Me Gustas-->
@@ -67,7 +71,7 @@
                 {
                     <h2>¡Debes estar logueado para comentar!</h2>
                     @Html.ActionLink("Iniciar Sesion", "Login", "Account")
-                    <hr/>
+                    <hr />
                 }
 
                 <!-- Single Comment -->
@@ -87,7 +91,7 @@
                                 }
                                 else
                                 {
-                                    <a class="btn border-success" id="BtnDenunciar" type="submit" href="@Url.Action("Create","Denuncias",new { Id = item.Id })">Denunciar</a>
+                                    <a class="btn btn-group" id="btnDenunciarComentario" type="submit" href="@Url.Action("Create","DenunciasComentarios",new { IdComentario = item.Id, IdPost = Model.Id })">Denunciar</a>
                                 }
                             }
                         }

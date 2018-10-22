@@ -12,7 +12,7 @@ using Servicios;
 
 namespace SitioWeb_Juegos.Controllers
 {
-    public class DenunciasController : Controller
+    public class DenunciasPostsController : Controller
     {
         private BDResennasJuegosEntities db = new BDResennasJuegosEntities();
 
@@ -28,14 +28,17 @@ namespace SitioWeb_Juegos.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ComentarioDenunciado model,int id)
+        public ActionResult Create(PostDenunciado model,int IdPost)
         {
             ConsultasDenuncias consultasdenuncias = new ConsultasDenuncias();
             var IdDenunciante = User.Identity.GetUserId();       
             model.Usuario = IdDenunciante;
-            model.IdComentario = id;
-            var idgenerado = consultasdenuncias.CrearDenunciaComentario(model);
-            return View(model);
+            model.IdPost = IdPost;
+            var idgenerado = consultasdenuncias.CrearDenunciaPost(model);
+            //return View(model);
+
+            return RedirectToAction("Index", "Posts");
+
         }
 
         public ActionResult CrearDenunciaComentario(string descripcion, int id, int motivo)
