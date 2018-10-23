@@ -18,7 +18,7 @@ namespace SitioWeb_Juegos.Controllers
         // GET: AdminPosts
         public ActionResult Index()
         {
-            var posts = db.Posts.Include(p => p.AspNetUsers).Include(p => p.Descripcion).Include(p => p.Estados).Include(p => p.Juegos);
+            var posts = db.Posts.Include(p => p.AspNetUsers).Include(p => p.Estados).Include(p => p.Juegos);
             return View(posts.ToList());
         }
 
@@ -125,7 +125,7 @@ namespace SitioWeb_Juegos.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Posts posts = db.Posts.Find(id);
-            db.Posts.Remove(posts);
+            posts.IdEstado = 3;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
